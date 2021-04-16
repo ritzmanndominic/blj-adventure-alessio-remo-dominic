@@ -50,7 +50,7 @@ public class IO {
     }
 
     public void map() {
-        System.out.println("Map: ");
+        System.out.println("[Map]");
         drawMultipleBox(20, 3, 4, "Balcony", "Balcony", "Balcony",
         "Bathroom", "Livingroom", "Gym", "Storeroom", "Bedroom", "Kitchen", "Toilet", "*Secretroom*", "Office");
     }
