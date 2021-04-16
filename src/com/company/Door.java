@@ -3,13 +3,29 @@ package com.company;
 import java.util.ArrayList;
 
 public class Door {
-    private ArrayList<Room> connector = new ArrayList<>();
+    private Room[] connector;
     private boolean locked;
 
     public Door(){}
 
-    public Door(ArrayList<Room> conector, boolean locked) {
-        this.connector = conector;
+    public Door(Room[] connector, boolean locked) {
+        this.connector = connector;
+        this.locked = locked;
+    }
+
+    public Room[] getConnector() {
+        return connector;
+    }
+
+    public void setConnector(Room[] connector) {
+        this.connector = connector;
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public void setLocked(boolean locked) {
         this.locked = locked;
     }
 }

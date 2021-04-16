@@ -8,8 +8,6 @@ public class Room {
     private ArrayList<Items> itemsArrayList = new ArrayList<>();
     private ArrayList<String> commands = new ArrayList<>(Arrays.asList("north", "east", "south", "west"));
 
-    Items items = new Items();
-
     public Room(){}
 
     public Room(String name) {
@@ -38,13 +36,5 @@ public class Room {
 
     public void setCommands(ArrayList<String> commands) {
         this.commands = commands;
-    }
-
-    public Items getItems() {
-        return items;
-    }
-
-    public void setItems(Items items) {
-        this.items = items;
     }
 }
