@@ -12,12 +12,9 @@ public class Room {
 
     public Room(){}
 
-    public Room(String name, ArrayList<Items> itemsArrayList) {
+    public Room(String name) {
         this.name = name;
-        this.itemsArrayList = itemsArrayList;
     }
-
-    Room office = new Room("Office", itemsArrayList);
 
     public String getName() {
         return name;
@@ -49,13 +46,5 @@ public class Room {
 
     public void setItems(Items items) {
         this.items = items;
-    }
-
-    public Room getOffice() {
-        return office;
-    }
-
-    public void setOffice(Room office) {
-        this.office = office;
     }
 }
