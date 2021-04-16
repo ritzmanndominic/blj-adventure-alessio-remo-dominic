@@ -6,6 +6,7 @@ public class Room {
     private int width;
     private int height;
     private ArrayList<Items> itemsArrayList = new ArrayList<>();
+    private ArrayList<Room> connector = new ArrayList<>();
 
     public Room(){}
 
@@ -13,5 +14,6 @@ public class Room {
         this.width = width;
         this.height = height;
         this.itemsArrayList = itemsArrayList;
+        this.connector = new ArrayList<Room>();
     }
 }
