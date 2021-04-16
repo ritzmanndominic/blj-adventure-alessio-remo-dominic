@@ -3,22 +3,11 @@ package com.company;
 import java.util.ArrayList;
 
 public class Game {
-    private final Door door1 = new Door();
-    private final Door door2 = new Door();
-    private final Door door3 = new Door();
-    private final Door door4 = new Door();
-    private final Door door5 = new Door();
-    private final Door door6 = new Door();
-    private final Door door7 = new Door();
-    private final Door door8 = new Door();
-    private final Door door9 = new Door();
-    private final Door door10 = new Door();
-    private final Door door11 = new Door();
-    private final Door door12 = new Door();
-    private final Door door13 = new Door();
 
-    public void createDoors(ArrayList<Door> doors) {
-
+    public void createDoors(ArrayList<Door> doors, ArrayList<Room> rooms) {
+        for (int i = 0; i < rooms.size(); i++) {
+            doors.add(new Door());
+        }
     }
 
 
@@ -45,19 +34,19 @@ public class Game {
         }
     }
 
-    public void addRoom(ArrayList<Room> rooms){
-        door1.setConnector(new Room[]{rooms.get(0), rooms.get(1)});
-        door2.setConnector(new Room[]{rooms.get(1), rooms.get(2)});
-        door3.setConnector(new Room[]{rooms.get(1), rooms.get(7)});
-        door4.setConnector(new Room[]{rooms.get(7), rooms.get(5)});
-        door5.setConnector(new Room[]{rooms.get(7), rooms.get(8)});
-        door6.setConnector(new Room[]{rooms.get(8), rooms.get(2)});
-        door7.setConnector(new Room[]{rooms.get(8), rooms.get(5)});
-        door8.setConnector(new Room[]{rooms.get(8), rooms.get(4)});
-        door9.setConnector(new Room[]{rooms.get(4), rooms.get(6)});
-        door10.setConnector(new Room[]{rooms.get(6), rooms.get(2)});
-        door11.setConnector(new Room[]{rooms.get(2), rooms.get(3)});
-        door12.setConnector(new Room[]{rooms.get(6), rooms.get(0)});
-        door13.setConnector(new Room[]{rooms.get(0), rooms.get(9)});
+    public void addRoom(ArrayList<Room> rooms, ArrayList<Door> doors){
+        doors.get(0).setConnector(new Room[]{rooms.get(0), rooms.get(1)});
+        doors.get(1).setConnector(new Room[]{rooms.get(1), rooms.get(2)});
+        doors.get(2).setConnector(new Room[]{rooms.get(1), rooms.get(7)});
+        doors.get(3).setConnector(new Room[]{rooms.get(7), rooms.get(5)});
+        doors.get(4).setConnector(new Room[]{rooms.get(7), rooms.get(8)});
+        doors.get(5).setConnector(new Room[]{rooms.get(8), rooms.get(2)});
+        doors.get(6).setConnector(new Room[]{rooms.get(8), rooms.get(5)});
+        doors.get(7).setConnector(new Room[]{rooms.get(8), rooms.get(4)});
+        doors.get(8).setConnector(new Room[]{rooms.get(4), rooms.get(6)});
+        doors.get(9).setConnector(new Room[]{rooms.get(6), rooms.get(2)});
+        doors.get(10).setConnector(new Room[]{rooms.get(2), rooms.get(3)});
+        doors.get(11).setConnector(new Room[]{rooms.get(6), rooms.get(0)});
+        doors.get(12).setConnector(new Room[]{rooms.get(0), rooms.get(9)});
     }
 }
