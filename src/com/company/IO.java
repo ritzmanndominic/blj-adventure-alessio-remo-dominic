@@ -1,6 +1,10 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class IO {
+
+    Scanner scn = new Scanner(System.in);
 
     public static void drawMultipleBox(int maxLength, int width, int height, String... strings) {
         final String HO_LINE = "\u2550";
