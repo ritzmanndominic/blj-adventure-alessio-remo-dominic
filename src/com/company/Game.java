@@ -23,7 +23,7 @@ public class Game {
     private final Room balcony = new Room("Balcony");
     private final Room storeroom = new Room("Storeroom");
     private final Room gym = new Room("Gym");
-    private final Room livingroom = new Room("Livinngroom");
+    private final Room livingroom = new Room("Livingroom");
     private final Room secretroom = new Room("Secretroom");
 
 
