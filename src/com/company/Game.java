@@ -1,7 +1,8 @@
 package com.company;
 
-public class Game {
+import java.util.ArrayList;
 
+public class Game {
     private final Door door1 = new Door();
     private final Door door2 = new Door();
     private final Door door3 = new Door();
@@ -14,6 +15,16 @@ public class Game {
     private final Door door10 = new Door();
     private final Door door11 = new Door();
     private final Door door12 = new Door();
+
+
+    public void createRooms(ArrayList<Room> rooms){
+        String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "LivingRoom", "Secretroom"};
+        for (String roomName : RoomNames) {
+            Room room = new Room(roomName);
+            rooms.add(room);
+        }
+    }
+
 
     private final Room office = new Room("Office");
     private final Room kitchen = new Room("Kitchen");
@@ -38,8 +49,8 @@ public class Game {
     private final Items trap2 = new Items(true);
     private final Items trap3 = new Items(true);
 
-    public void addItems(){
-           office.getItemsArrayList().add(diamant1);
+    public void addItems(ArrayList<Room> rooms){
+            rooms.get(1).getItemsArrayList().add(diamant1);
            kitchen.getItemsArrayList().add(trap1);
            bedroom.getItemsArrayList().add(diamant2);
            toilett.getItemsArrayList().add(diamant3);
