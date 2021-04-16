@@ -16,6 +16,10 @@ public class Game {
     private final Door door11 = new Door();
     private final Door door12 = new Door();
 
+    public void createDoors(ArrayList<Doors> doors) {
+        
+    }
+
 
     public void createRooms(ArrayList<Room> rooms){
         String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "LivingRoom", "Secretroom"};
@@ -25,40 +29,19 @@ public class Game {
         }
     }
 
+    public void createItems(ArrayList<Items> items){
+        String[] itemNames = {"diamond", "gold", "coin", "golden skull", "ring", "sword", "bone", "cursed book", "easter egg"};
+        boolean[] alarm = {false, false, false, true, false, true, true, true, false};
+        for (int i = 0; i < itemNames.length; i++) {
+            Items item = new Items(itemNames[i], alarm[i]);
+            items.add(item);
+        }
+    }
 
-    private final Room office = new Room("Office");
-    private final Room kitchen = new Room("Kitchen");
-    private final Room bedroom = new Room("Bedroom");
-    private final Room toilett = new Room("Toilett");
-    private final Room bathroom = new Room("Bathroom");
-    private final Room balcony = new Room("Balcony");
-    private final Room storeroom = new Room("Storeroom");
-    private final Room gym = new Room("Gym");
-    private final Room livingroom = new Room("Livinngroom");
-    private final Room secretroom = new Room("Secretroom");
-
-
-    private final Items diamant1 = new Items(false);
-    private final Items diamant2 = new Items(false);
-    private final Items diamant3 = new Items(false);
-    private final Items diamant4 = new Items(false);
-    private final Items diamant5 = new Items(false);
-    private final Items diamant6 = new Items(false);
-
-    private final Items trap1 = new Items(true);
-    private final Items trap2 = new Items(true);
-    private final Items trap3 = new Items(true);
-
-    public void addItems(ArrayList<Room> rooms){
-            rooms.get(1).getItemsArrayList().add(diamant1);
-           kitchen.getItemsArrayList().add(trap1);
-           bedroom.getItemsArrayList().add(diamant2);
-           toilett.getItemsArrayList().add(diamant3);
-           bathroom.getItemsArrayList().add(diamant4);
-           balcony.getItemsArrayList().add(diamant5);
-           livingroom.getItemsArrayList().add(diamant6);
-           gym.getItemsArrayList().add(trap2);
-           storeroom.getItemsArrayList().add(trap3);
+    public void addItems(ArrayList<Room> rooms, ArrayList<Items> items){
+        for(int i = 0; i < rooms.size(); i++) {
+            rooms.get(i).getItemsArrayList().add(items.get(i));
+        }
     }
 
     public void addRoom(){
