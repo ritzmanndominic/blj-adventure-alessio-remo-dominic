@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Game {
 
-    public void createDoors(ArrayList<Door> doors, ArrayList<Room> rooms) {
-        for (int i = 0; i < rooms.size(); i++) {
+    public void createDoors(ArrayList<Door> doors) {
+        for (int i = 0; i < 13; i++) {
             doors.add(new Door());
         }
     }

@@ -10,7 +10,7 @@ public class Main {
         ArrayList<Door> doors = new ArrayList<>();
         Game game = new Game();
         game.createRooms(rooms);
-        game.createDoors(doors, rooms);
+        game.createDoors(doors);
         game.addRoom(rooms, doors);
         game.createItems(items);
         game.addItems(rooms, items);
