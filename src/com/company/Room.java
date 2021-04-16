@@ -16,4 +16,6 @@ public class Room {
         this.itemsArrayList = itemsArrayList;
         this.connector = new ArrayList<Room>();
     }
+
+
 }
