@@ -9,6 +9,7 @@ public class Main {
         ArrayList<Items> items = new ArrayList<>();
         Game game = new Game();
         game.createRooms(rooms);
+        game.addRoom(rooms);
         game.createItems(items);
         game.addItems(rooms, items);
     }
