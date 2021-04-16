@@ -17,6 +17,6 @@ public class Main {
         game.addItems(rooms, items);
 
         io.map();
-        io.printBorder("Balcony");
+        io.printBorder("Balcony ");
     }
 }

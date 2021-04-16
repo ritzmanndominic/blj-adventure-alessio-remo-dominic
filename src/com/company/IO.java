@@ -65,7 +65,7 @@ public class IO {
         }
         System.out.println("\u2557");
         //print middle of box
-        System.out.print("\u2551 ");
+        System.out.print("\u2551");
         for (int x = 0; x < (word.length() + 10) / 2; x++) {
             System.out.print(" ");
         }
