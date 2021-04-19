@@ -8,12 +8,12 @@ public class Game {
     private ArrayList<Room> rooms = new ArrayList<>();
     private ArrayList<Items> items = new ArrayList<>();
     private ArrayList<Door> doors = new ArrayList<>();
-    private int activeRoom;
+    private int activeRoom = 5;
 
     IO io = new IO();
 
     public void createDoors(ArrayList<Door> doors) {
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 12; i++) {
             doors.add(new Door());
         }
     }
@@ -54,29 +54,33 @@ public class Game {
         doors.get(8).setConnector(new Room[]{rooms.get(4), rooms.get(6)});
         doors.get(9).setConnector(new Room[]{rooms.get(6), rooms.get(2)});
         doors.get(10).setConnector(new Room[]{rooms.get(2), rooms.get(3)});
-        doors.get(11).setConnector(new Room[]{rooms.get(6), rooms.get(0)});
-        doors.get(12).setConnector(new Room[]{rooms.get(0), rooms.get(9)});
+        doors.get(11).setConnector(new Room[]{rooms.get(0), rooms.get(9)});
     }
 
     public void move() {
         boolean validMove = false;
         String newRoom;
-        activeRoom = 5;
-        System.out.println("Type in the room, to go in: \n");
-        rooms.get(activeRoom).getName();
-        newRoom = io.scn.nextLine();
-
-
-        for (int i = 0; i < rooms.size(); i++) {
-            if (doors.get(i).getConnector()[0].getName().toLowerCase().equals(newRoom.toLowerCase()) ||
-                    doors.get(i).getConnector()[1].getName().toLowerCase().equals(newRoom.toLowerCase())) {
-                if (doors.get(i).getConnector()[0].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase()) ||
-                        doors.get(i).getConnector()[1].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase())) {
-                    validMove = true;
+        do {
+            validMove = false;
+            System.out.println(rooms.get(activeRoom).getName());
+            System.out.println("Type in the room you want to go in: \n");
+            newRoom = io.scn.nextLine();
+            for (int i = 0; i < doors.size(); i++) {
+                if (doors.get(i).getConnector()[0].getName().toLowerCase().equals(newRoom.toLowerCase()) ||
+                        doors.get(i).getConnector()[1].getName().toLowerCase().equals(newRoom.toLowerCase())) {
+                    if (doors.get(i).getConnector()[0].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase()) ||
+                            doors.get(i).getConnector()[1].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase())) {
+                        validMove = true;
+                        for (int j = 0; j < rooms.size(); j++) {
+                            if (newRoom.toLowerCase().equals(rooms.get(j).getName().toLowerCase())) {
+                                activeRoom = j;
+                            }
+                        }
+                    }
                 }
             }
-        }
-        System.out.println(validMove);
+            System.out.println(validMove);
+        } while (!(newRoom.equals("X")));
     }
 
     public ArrayList<Room> getRooms() {
