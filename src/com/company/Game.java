@@ -62,8 +62,10 @@ public class Game {
         boolean validMove = false;
         String newRoom;
         activeRoom = 5;
-        System.out.println(rooms.get(activeRoom).getName());
+        System.out.println("Type in the room, to go in: \n");
+        rooms.get(activeRoom).getName();
         newRoom = io.scn.nextLine();
+
 
         for (int i = 0; i < rooms.size(); i++) {
             if (doors.get(i).getConnector()[0].getName().toLowerCase().equals(newRoom.toLowerCase()) ||
@@ -71,7 +73,6 @@ public class Game {
                 if (doors.get(i).getConnector()[0].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase()) ||
                         doors.get(i).getConnector()[1].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase())) {
                     validMove = true;
-
                 }
             }
         }
