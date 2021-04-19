@@ -6,7 +6,8 @@ public class Door {
     private Room[] connector;
     private boolean locked;
 
-    public Door(){}
+    public Door() {
+    }
 
     public Door(Room[] connector, boolean locked) {
         this.connector = connector;
