@@ -16,7 +16,6 @@ public class Main {
 
         io.map();
         io.printBorder("Balcony ");
-
         game.move();
     }
 }
