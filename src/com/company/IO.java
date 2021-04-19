@@ -41,7 +41,6 @@ public class IO {
             System.out.println();
         }
     }
-
     private static int[] getLength(int maxLength, int usedLength) {
         int[] lengthDifference = new int[3];
         lengthDifference[0] = maxLength - usedLength;
@@ -57,11 +56,11 @@ public class IO {
     public void map() {
         System.out.println("[Map]");
         drawMultipleBox(20, 3, 4, "", "Balcony", "Balcony",
-                "Bathroom", "Livingroom", "Gym", "Storeroom", "Bedroom", "Kitchen", "Toilet", "*Secretroom*", "Office");
+        "Bathroom", "Livingroom", "Gym", "Storeroom", "Bedroom", "Kitchen", "Toilet", "*Secretroom*", "Office");
     }
 
     public void printBorder(String word) {
-        System.out.println("[" + word + "]");
+        System.out.println("["+ word + "]");
         int positionDoor = word.length() + word.length() + 10;
         //print top of box
         System.out.print("\u2554");
@@ -82,7 +81,7 @@ public class IO {
         //print bottom if box
         System.out.print("\u255A");
         for (int i = 0; i < positionDoor; i++) {
-            if (positionDoor / 4 == i || positionDoor - (positionDoor / 4) == i) {
+            if (positionDoor /4 == i ||  positionDoor - (positionDoor /4) == i) {
                 System.out.print("\u2573");
             } else {
                 System.out.print("\u2550");

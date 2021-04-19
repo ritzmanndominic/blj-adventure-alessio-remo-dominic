@@ -4,8 +4,7 @@ public class Items {
     private String name;
     private boolean alarm;
 
-    public Items() {
-    }
+    public Items(){}
 
     public Items(String name, boolean alarm) {
         this.name = name;
