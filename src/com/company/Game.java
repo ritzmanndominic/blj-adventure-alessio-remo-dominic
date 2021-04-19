@@ -20,7 +20,7 @@ public class Game {
 
 
     public void createRooms(ArrayList<Room> rooms) {
-        String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "LivingRoom", "Secretroom"};
+        String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "Livingroom", "Secretroom"};
         for (String roomName : RoomNames) {
             Room room = new Room(roomName);
             rooms.add(room);
@@ -59,11 +59,23 @@ public class Game {
     }
 
     public void move() {
+        boolean validMove = false;
+        String newRoom;
+        activeRoom = 5;
+        System.out.println(rooms.get(activeRoom).getName());
+        newRoom = io.scn.nextLine();
 
-        System.out.println(rooms.get(5).getName());
-        activeRoom = io.scn.nextInt();
+        for (int i = 0; i < rooms.size(); i++) {
+            if (doors.get(i).getConnector()[0].getName().toLowerCase().equals(newRoom.toLowerCase()) ||
+                    doors.get(i).getConnector()[1].getName().toLowerCase().equals(newRoom.toLowerCase())) {
+                if (doors.get(i).getConnector()[0].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase()) ||
+                        doors.get(i).getConnector()[1].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase())) {
+                    validMove = true;
 
-
+                }
+            }
+        }
+        System.out.println(validMove);
     }
 
     public ArrayList<Room> getRooms() {
