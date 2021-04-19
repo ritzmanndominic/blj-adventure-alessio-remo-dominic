@@ -62,7 +62,6 @@ public class Game {
         String newRoom;
         do {
             validMove = false;
-            System.out.println(rooms.get(activeRoom).getName());
             System.out.println("Type in the room you want to go in: \n");
             newRoom = io.scn.nextLine();
             for (int i = 0; i < doors.size(); i++) {
