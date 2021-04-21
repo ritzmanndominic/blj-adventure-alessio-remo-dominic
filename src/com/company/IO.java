@@ -11,7 +11,7 @@ public class IO {
     public void switcher(Game game) {
 
         do {
-            System.out.println("\n1: Print out the Map\t 2: Print out the active Room you're in\t\t 3: Print out the possible rooms \t 4: Exit Program ");
+            System.out.println("\n1: Print out the Map\t 2: Print out the active Room you're in\t\t 3: Print out the possible rooms \t 4: Move between rooms\t 5: Exit Program ");
             chooice = scn.nextInt();
 
             switch (chooice) {
@@ -24,9 +24,13 @@ public class IO {
                 //print possible rooms
                 case 3 -> possibleRoom(5, game);
 
-                case 4 -> System.exit(0);
+                //move between rooms
+                case 4-> game.move(game);
+
+                //Exit program
+                case 5 -> System.exit(0);
             }
-        } while (chooice != 4);
+        } while (chooice != 5);
 
 
     }
