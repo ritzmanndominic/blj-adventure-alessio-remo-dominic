@@ -11,6 +11,13 @@ public class Game {
 
     IO io = new IO();
 
+    public void manage(ArrayList<Items> items, ArrayList<Door> doors, ArrayList<Room> rooms){
+        createRooms(rooms);
+        createDoors(rooms, doors);
+        createItems(items);
+        addItems(rooms, items);
+    }
+
     public void createDoors(ArrayList<Room> rooms, ArrayList<Door> doors) {
         doors.add(new Door(new Room[]{rooms.get(0), rooms.get(1)}, false));
         doors.add(new Door(new Room[]{rooms.get(0), rooms.get(9)}, true));
