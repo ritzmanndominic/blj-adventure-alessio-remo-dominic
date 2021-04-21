@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e99e4ad6-82aa-4a0b-acc6-e8dc3714fbce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/blj-adventure-alessio-remo-dominic/com/company/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blj-adventure-alessio-remo-dominic/com/company/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blj-adventure-alessio-remo-dominic/com/company/IO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blj-adventure-alessio-remo-dominic/com/company/IO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Game.java" afterDir="false" />
-    </list>
+    <list default="true" id="e99e4ad6-82aa-4a0b-acc6-e8dc3714fbce" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
