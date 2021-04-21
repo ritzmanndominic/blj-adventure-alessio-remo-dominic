@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class IO {
@@ -8,7 +9,7 @@ public class IO {
     Scanner scn = new Scanner(System.in);
 
 
-    public void switcher(Game game, Player player) {
+    public void switcher(Game game, Player player) throws IOException, ClassNotFoundException {
 
         do {
             map(game);
@@ -26,6 +27,9 @@ public class IO {
 
                 //Exit program
                 case 4 -> System.exit(0);
+
+                //Load Data
+                case 5 -> StoreScore.loadData("Store_Location-Items", player, game);
             }
         } while (choice != 4);
 
@@ -101,7 +105,7 @@ public class IO {
         drawMultipleBox(20, 4, 4, game, "", "Balcony", "Balcony", "Balcony",
                 "Bathroom", "Livingroom", "Livingroom", "Gym", "Storeroom", "Bedroom", "Bedroom", "Kitchen", "", "Toilet", "Secretroom", "Office");
         System.out.println("\u001B[36m");
-        drawMultipleBox(24, 4, 1, game, " 1: Print out the possible rooms ",  " 2: Move between rooms", "3: to inspect the room", "4: Exit Program" );
+        drawMultipleBox(24, 4, 1, game, " 1: Print out the possible rooms ",  " 2: Move between rooms", "3: to inspect the room", "4: Exit Program", "5: Load old data" );
         System.out.print("\u001B[0m");
     }
 
