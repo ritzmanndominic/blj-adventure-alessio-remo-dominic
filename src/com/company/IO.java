@@ -91,7 +91,8 @@ public class IO {
     }
 
     public void activeRoom(int activeroom, Game game){
-        System.out.println(game.getDoors().get(activeroom).getConnector());
+        Room[] rooms = game.getDoors().get(activeroom).getConnector();
+        System.out.println("Possible rooms: " + rooms[0].getName() + ", " + rooms[1].getName());
     }
 
 }
