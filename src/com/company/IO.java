@@ -12,7 +12,6 @@ public class IO {
 
         do {
             map(game);
-            System.out.println("1: Print out the possible rooms  \t 2: Move between rooms (X for exit)\t 3: to inspect the room\t 4: Exit Program ");
             choice = scn.nextInt();
 
             switch (choice) {
@@ -98,10 +97,13 @@ public class IO {
     }
 
     public void map(Game game) {
-        System.out.println("[Map]");
+        System.out.print("\u001B[0m");
         drawMultipleBox(20, 4, 4, game, "", "Balcony", "Balcony", "Balcony",
                 "Bathroom", "Livingroom", "Livingroom", "Gym", "Storeroom", "Bedroom", "Bedroom", "Kitchen", "", "Toilet", "*Secretroom*", "Office");
+        System.out.print("\u001B[36m");
+        drawMultipleBox(24, 1, 4, game, "1: Print out the possible rooms",  " 2: Move between rooms (X for exit)  ", "3: to inspect the room", "4: Exit Program" );
     }
+
 
     public void printBorder(String word) {
         System.out.println("[" + word + "]");
