@@ -9,8 +9,7 @@ public class Main {
 
         Game game = new Game();
         game.createRooms(game.getRooms());
-        game.createDoors(game.getDoors());
-        game.addRoom(game.getRooms(), game.getDoors());
+        game.createDoors(game.getRooms(), game.getDoors());
         game.createItems(game.getItems());
         game.addItems(game.getRooms(), game.getItems());
         /*

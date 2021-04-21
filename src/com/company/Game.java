@@ -12,12 +12,20 @@ public class Game {
 
     IO io = new IO();
 
-    public void createDoors(ArrayList<Door> doors) {
-        for (int i = 0; i < 12; i++) {
-            doors.add(new Door());
-        }
+    public void createDoors(ArrayList<Room> rooms, ArrayList<Door> doors) {
+        doors.add(new Door(new Room[]{rooms.get(0), rooms.get(1)}, false));
+        doors.add(new Door(new Room[]{rooms.get(0), rooms.get(9)}, true));
+        doors.add(new Door(new Room[]{rooms.get(1), rooms.get(2)}, false));
+        doors.add(new Door(new Room[]{rooms.get(1), rooms.get(7)}, false));
+        doors.add(new Door(new Room[]{rooms.get(7), rooms.get(8)}, false));
+        doors.add(new Door(new Room[]{rooms.get(7), rooms.get(5)}, false));
+        doors.add(new Door(new Room[]{rooms.get(5), rooms.get(8)}, false));
+        doors.add(new Door(new Room[]{rooms.get(8), rooms.get(4)}, false));
+        doors.add(new Door(new Room[]{rooms.get(8), rooms.get(2)}, false));
+        doors.add(new Door(new Room[]{rooms.get(2), rooms.get(3)}, false));
+        doors.add(new Door(new Room[]{rooms.get(2), rooms.get(6)}, false));
+        doors.add(new Door(new Room[]{rooms.get(6), rooms.get(4)}, false));
     }
-
 
     public void createRooms(ArrayList<Room> rooms) {
         String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "Livingroom", "Secretroom"};
@@ -42,20 +50,7 @@ public class Game {
         }
     }
 
-    public void addRoom(ArrayList<Room> rooms, ArrayList<Door> doors) {
-        doors.get(0).setConnector(new Room[]{rooms.get(0), rooms.get(1)});
-        doors.get(1).setConnector(new Room[]{rooms.get(1), rooms.get(2)});
-        doors.get(2).setConnector(new Room[]{rooms.get(1), rooms.get(7)});
-        doors.get(3).setConnector(new Room[]{rooms.get(7), rooms.get(5)});
-        doors.get(4).setConnector(new Room[]{rooms.get(7), rooms.get(8)});
-        doors.get(5).setConnector(new Room[]{rooms.get(8), rooms.get(2)});
-        doors.get(6).setConnector(new Room[]{rooms.get(8), rooms.get(5)});
-        doors.get(7).setConnector(new Room[]{rooms.get(8), rooms.get(4)});
-        doors.get(8).setConnector(new Room[]{rooms.get(4), rooms.get(6)});
-        doors.get(9).setConnector(new Room[]{rooms.get(6), rooms.get(2)});
-        doors.get(10).setConnector(new Room[]{rooms.get(2), rooms.get(3)});
-        doors.get(11).setConnector(new Room[]{rooms.get(0), rooms.get(9)});
-    }
+
 
     public void move(Game game) {
         boolean validMove = false;
