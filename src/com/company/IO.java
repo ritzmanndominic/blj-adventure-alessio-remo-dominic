@@ -8,10 +8,10 @@ public class IO {
     Scanner scn = new Scanner(System.in);
 
 
-    public void switcher(Game game) {
+    public void switcher(Game game, Player player) {
 
         do {
-            System.out.println("\n1: Print out the Map\t 2: Print out the active Room you're in\t\t 3: Print out the possible rooms \t 4: Move between rooms\t 5: Exit Program ");
+            System.out.println("\n1: Print out the Map\t 2: Print out the active Room you're in\t\t 3: Print out the possible rooms \t 4: Move between rooms\t 6: Exit Program ");
             chooice = scn.nextInt();
 
             switch (chooice) {
@@ -27,8 +27,11 @@ public class IO {
                 //move between rooms
                 case 4-> game.move(game);
 
+                //check if room has item
+                case 5 -> game.inspectRoom(player);
+
                 //Exit program
-                case 5 -> System.exit(0);
+                case 6 -> System.exit(0);
             }
         } while (chooice != 5);
 

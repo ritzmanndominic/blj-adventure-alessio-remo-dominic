@@ -8,6 +8,7 @@ public class Main {
         IO io = new IO();
 
         Game game = new Game();
+        Player player = new Player();
         game.createRooms(game.getRooms());
         game.createDoors(game.getRooms(), game.getDoors());
         game.createItems(game.getItems());
@@ -17,6 +18,6 @@ public class Main {
         io.printBorder("Balcony ");
         game.move(game);
         */
-        io.switcher(game);
+        io.switcher(game, player);
     }
 }

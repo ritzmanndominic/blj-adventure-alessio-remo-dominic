@@ -77,6 +77,13 @@ public class Game {
         } while (!(newRoom.equals("X")));
     }
 
+    public void inspectRoom(Player player){
+        int lives = 3;
+        if (rooms.get(getActiveRoom()).getItemsArrayList().get(getActiveRoom()).isAlarm()) {
+            player.setLives(lives - 1);
+        }
+    }
+
     public int getActiveRoom() {
         return activeRoom;
     }
