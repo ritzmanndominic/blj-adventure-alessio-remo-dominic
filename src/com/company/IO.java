@@ -57,7 +57,11 @@ public class IO {
         int rightDistance = 2; //Index of lengthDifference Array
         for (int k = 0; k < height; k++) {
             for (int j = 0; j < width; j++) {
-                System.out.print(CORNER_1 + HO_LINE.repeat(maxLength) + CORNER_2 + SPACE.repeat(2));
+                if (k * width + j >= strings.length || strings[k * width + j].length() == 0) {
+                    System.out.print(SPACE.repeat(2 + maxLength + 2));
+                } else {
+                    System.out.print(CORNER_1 + HO_LINE.repeat(maxLength) + CORNER_2 + SPACE.repeat(2));
+                }
             }
             System.out.println();
             for (int j = 0; j < width; j++) {
@@ -67,12 +71,20 @@ public class IO {
                 lengthDifference = getLength(maxLength, printText.length());
                 printText = printText.replace(game.getRooms().get(game.getActiveRoom()).getName(),
                         "\u001B[35m" + printText + "\u001B[0m");
-                System.out.print(VER_LINE + SPACE.repeat(lengthDifference[leftDistance]) + printText +
-                        SPACE.repeat(lengthDifference[rightDistance]) + VER_LINE + SPACE.repeat(2));
+                if (k * width + j >= strings.length || strings[k * width + j].length() == 0) {
+                    System.out.print(SPACE.repeat(2 + maxLength + 2));
+                } else {
+                    System.out.print(VER_LINE + SPACE.repeat(lengthDifference[leftDistance]) + printText +
+                            SPACE.repeat(lengthDifference[rightDistance]) + VER_LINE + SPACE.repeat(2));
+                }
             }
             System.out.println();
             for (int j = 0; j < width; j++) {
-                System.out.print(CORNER_4 + HO_LINE.repeat(maxLength) + CORNER_3 + SPACE.repeat(2));
+                if (k * width + j >= strings.length || strings[k * width + j].length() == 0) {
+                    System.out.print(SPACE.repeat(2 + maxLength + 2));
+                } else {
+                    System.out.print(CORNER_4 + HO_LINE.repeat(maxLength) + CORNER_3 + SPACE.repeat(2));
+                }
             }
             System.out.println();
         }
