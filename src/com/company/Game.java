@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Game {
 
-    private ArrayList<Room> rooms = new ArrayList<>();
-    private ArrayList<Items> items = new ArrayList<>();
-    private ArrayList<Door> doors = new ArrayList<>();
+    private final ArrayList<Room> rooms = new ArrayList<>();
+    private final ArrayList<Items> items = new ArrayList<>();
+    private final ArrayList<Door> doors = new ArrayList<>();
     private int activeRoom = 5;
 
     IO io = new IO();
@@ -34,7 +34,7 @@ public class Game {
     }
 
     public void createRooms(ArrayList<Room> rooms) {
-        String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "Livingroom", "Secretroom"};
+        String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "Living room", "Secret room"};
         for (String roomName : RoomNames) {
             Room room = new Room(roomName);
             rooms.add(room);
@@ -56,7 +56,7 @@ public class Game {
         }
     }
     
-    public void move(Game game) {
+    public void move() {
         boolean validMove = false;
         String newRoom;
         String cancel = "x";
@@ -90,14 +90,33 @@ public class Game {
     }
 
     public void inspectRoom(Player player) {
-        System.out.println("You have found " + getItems().get(getActiveRoom()).getName());
-        if (getItems().get(getActiveRoom()).isAlarm()) {
-            player.setLives(player.getLives() - 1);
+        if (!getItems().get(getActiveRoom()).getName().isEmpty()) {
+            System.out.println("You have found " + getItems().get(getActiveRoom()).getName());
+            if(getItems().get(getActiveRoom()).isAlarm()) {
+                System.out.println("Oh no I shouldn't have taken that!");
+                System.out.println("\u001B[31myou lost a life\u001B[0m");
+                player.setLives(player.getLives() - 1);
+                io.printHeart(player.getLives(), "red");
+                player.getItemList().add(getItems().get(getActiveRoom()));
+            }
+            else if (player.getLives() < 3) {
+                player.setLives(player.getLives() + 1);
+                System.out.println("\u001B[32mnice! I got an extra life\u001B[0m");
+                io.printHeart(player.getLives(), "green");
+            }
+            else {
+                io.printHeart(player.getLives(), "normal");
+            }
+            getItems().get(getActiveRoom()).setName("");
+        }
+        else {
+            System.out.println("no item in this room");
         }
         if (player.getLives() == 0) {
             System.out.println("\u001B[31myou have died\u001B[0m");
             System.exit(0);
         }
+
     }
 
     public int getActiveRoom() {
@@ -108,35 +127,16 @@ public class Game {
         this.activeRoom = activeRoom;
     }
 
-    public IO getIo() {
-        return io;
-    }
-
-    public void setIo(IO io) {
-        this.io = io;
-    }
-
     public ArrayList<Room> getRooms() {
         return rooms;
-    }
-
-    public void setRooms(ArrayList<Room> rooms) {
-        this.rooms = rooms;
     }
 
     public ArrayList<Items> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<Items> items) {
-        this.items = items;
-    }
-
     public ArrayList<Door> getDoors() {
         return doors;
     }
 
-    public void setDoors(ArrayList<Door> doors) {
-        this.doors = doors;
-    }
 }
