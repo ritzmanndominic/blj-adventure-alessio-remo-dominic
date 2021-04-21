@@ -93,6 +93,11 @@ public class Game {
         System.out.println("You have found " + getItems().get(getActiveRoom()).getName());
         if (getItems().get(getActiveRoom()).isAlarm()) {
             player.setLives(player.getLives() - 1);
+            getItems().remove(getActiveRoom());
+            player.getItemList().add(getItems().get(getActiveRoom()));
+        }
+        if (getItems().get(getActiveRoom()).getName().isEmpty()) {
+            System.out.println("no item in this room");
         }
         if (player.getLives() == 0) {
             System.out.println("\u001B[31myou have died\u001B[0m");
