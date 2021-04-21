@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class Room {
     private String name;
-    private final ArrayList<Items> itemsArrayList = new ArrayList<>();
+    private ArrayList<Items> itemsArrayList = new ArrayList<>();
 
 
     public Room() {
@@ -26,5 +26,4 @@ public class Room {
     public ArrayList<Items> getItemsArrayList() {
         return itemsArrayList;
     }
-
 }
