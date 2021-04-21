@@ -104,6 +104,9 @@ public class Game {
                 System.out.println("\u001B[32mnice! I got an extra life\u001B[0m");
                 io.printHeart(player.getLives(), "green");
             }
+            else {
+                io.printHeart(player.getLives(), "normal");
+            }
             getItems().get(getActiveRoom()).setName("");
         }
         else {
@@ -113,6 +116,7 @@ public class Game {
             System.out.println("\u001B[31myou have died\u001B[0m");
             System.exit(0);
         }
+
     }
 
     public int getActiveRoom() {

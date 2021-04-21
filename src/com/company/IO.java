@@ -170,7 +170,7 @@ public class IO {
         if (color.equals("red")) {
             System.out.println("\u001B[31m");
         }
-        else {
+        else if (color.equals("green")){
             System.out.println("\u001B[32m");
         }
         for (int i = 0; i < amount; i++) {
