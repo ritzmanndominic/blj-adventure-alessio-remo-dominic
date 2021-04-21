@@ -5,16 +5,14 @@ import java.util.ArrayList;
 public class Player {
     private ArrayList<Items> itemList = new ArrayList<>();
     private int lives;
-    private ArrayList<String> location = new ArrayList<>();
-    private boolean secretKey;
+
 
     public Player(){}
 
-    public Player(ArrayList<Items> itemList, int lifes, ArrayList<String> location, boolean secretKey) {
+    public Player(ArrayList<Items> itemList, int lives) {
         this.itemList = itemList;
-        this.lives = lifes;
-        this.location = location;
-        this.secretKey = secretKey;
+        this.lives = lives;
+
     }
 
     public int getLives() {
@@ -23,5 +21,9 @@ public class Player {
 
     public void setLives(int lives) {
         this.lives = lives;
+    }
+
+    public ArrayList<Items> getItemList() {
+        return itemList;
     }
 }

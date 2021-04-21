@@ -80,6 +80,7 @@ public class Game {
     }
 
     public void inspectRoom(Player player){
+        System.out.println("You have found " + rooms.get(getActiveRoom()).getItemsArrayList().get(getActiveRoom()).getName());
         int lives = 3;
         if (rooms.get(getActiveRoom()).getItemsArrayList().get(getActiveRoom()).isAlarm()) {
             player.setLives(lives - 1);

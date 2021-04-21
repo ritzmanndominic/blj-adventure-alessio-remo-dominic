@@ -9,6 +9,7 @@ public class Main {
 
         Game game = new Game();
         Player player = new Player();
+        Player player1 = new Player(player.getItemList(), 3);
         game.createRooms(game.getRooms());
         game.createDoors(game.getRooms(), game.getDoors());
         game.createItems(game.getItems());
@@ -19,7 +20,7 @@ public class Main {
         io.printBorder("Balcony ");
         game.move(game);
         */
-        io.switcher(game, player);
+        io.switcher(game, player1);
        // StoreScore.readObject("bananen");
     }
 }
