@@ -90,8 +90,8 @@ public class Game {
     }
 
     public void inspectRoom(Player player) {
-        System.out.println("You have found " + rooms.get(getActiveRoom()).getItemsArrayList().get(getActiveRoom()).getName());
-        if (rooms.get(getActiveRoom()).getItemsArrayList().get(getActiveRoom()).isAlarm()) {
+        System.out.println("You have found " + getItems().get(getActiveRoom()).getName());
+        if (getItems().get(getActiveRoom()).isAlarm()) {
             player.setLives(player.getLives() - 1);
         }
     }
