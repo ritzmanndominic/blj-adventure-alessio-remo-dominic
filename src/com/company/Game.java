@@ -54,8 +54,7 @@ public class Game {
         boolean validMove = false;
         String newRoom;
         do {
-            validMove = false;
-            System.out.println("Type in the room you want to go in: \n");
+            System.out.print("\nType in the room you want to go in: ");
             newRoom = io.scn.nextLine();
             for (int i = 0; i < doors.size(); i++) {
                 if (doors.get(i).getConnector()[0].getName().toLowerCase().equals(newRoom.toLowerCase()) ||
@@ -71,17 +70,17 @@ public class Game {
                     }
                 }
             }
-            if (newRoom.equals("X")) {
-                System.out.println("Exit");
+            if (validMove) {
+                System.out.println("You entered the " + newRoom);
             } else {
-                System.out.println(validMove);
+                System.out.print("The room could not be found, try again");
             }
-        } while (!(newRoom.equals("X")));
+        } while (!validMove);
     }
 
     public void inspectRoom(Player player) {
         System.out.println("You have found " + rooms.get(getActiveRoom()).getItemsArrayList().get(getActiveRoom()).getName());
-        int lives = 3;
+        int lives = player.getLives();
         if (rooms.get(getActiveRoom()).getItemsArrayList().get(getActiveRoom()).isAlarm()) {
             player.setLives(lives - 1);
         }

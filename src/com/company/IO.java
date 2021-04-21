@@ -11,29 +11,24 @@ public class IO {
     public void switcher(Game game, Player player) {
 
         do {
-            System.out.println("\n1: Print out the Map\t 2: Print out the active Room you're in\t\t 3: Print out the possible rooms  \t 4: Move between rooms (X for exit)\t 5: to inspect the room\t 6: Exit Program ");
+            map(game);
+            System.out.println("1: Print out the possible rooms  \t 2: Move between rooms (X for exit)\t 3: to inspect the room\t 4: Exit Program ");
             choice = scn.nextInt();
 
             switch (choice) {
-                //print out map
-                case 1 -> map(game);
-
-                //print active room
-                case 2 -> System.out.println((game.getRooms().get(game.getActiveRoom()).getName()));
-
                 //print possible rooms
-                case 3 -> possibleRoom(game.getActiveRoom(), game);
+                case 1 -> possibleRoom(game.getActiveRoom(), game);
 
                 //move between rooms
-                case 4 -> game.move(game);
+                case 2 -> game.move(game);
 
                 //check if room has item
-                case 5 -> game.inspectRoom(player);
+                case 3 -> game.inspectRoom(player);
 
                 //Exit program
-                case 6 -> System.exit(0);
+                case 4 -> System.exit(0);
             }
-        } while (choice != 5);
+        } while (choice != 4);
 
 
     }
@@ -157,6 +152,7 @@ public class IO {
                 first = true;
             }
         }
+        System.out.println("\n");
     }
 
 }
