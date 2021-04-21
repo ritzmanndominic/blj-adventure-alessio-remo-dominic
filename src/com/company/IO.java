@@ -65,9 +65,9 @@ public class IO {
                 String printText;
                 if (k * width + j < strings.length) printText = strings[k * width + j];
                 else printText = "";
-                printText = printText.replace(game.getRooms().get(game.getActiveRoom()).getName(), "\u001B[35m" + printText + "\u001B[0m");
                 lengthDifference = getLength(maxLength, printText.length());
-
+                printText = printText.replace(game.getRooms().get(game.getActiveRoom()).getName(),
+                        "\u001B[35m" + printText + "\u001B[0m");
                 System.out.print(VER_LINE + SPACE.repeat(lengthDifference[leftDistance]) + printText +
                         SPACE.repeat(lengthDifference[rightDistance]) + VER_LINE + SPACE.repeat(2));
             }
@@ -93,7 +93,7 @@ public class IO {
 
     public void map(Game game) {
         System.out.println("[Map]");
-        drawMultipleBox(20, 4, 4, game, "Balcony", "Balcony", "Balcony",
+        drawMultipleBox(20, 4, 4, game, "", "Balcony", "Balcony", "Balcony",
                 "Bathroom", "Livingroom", "Livingroom", "Gym", "Storeroom", "Bedroom", "Bedroom", "Kitchen", "", "Toilet", "*Secretroom*", "Office");
     }
 
@@ -133,31 +133,19 @@ public class IO {
         boolean first = false;
         for (int i = 0; i < game.getDoors().size(); i++) {
             if (game.getDoors().get(i).getConnector()[0] == game.getRooms().get(activeRoom)) {
-                if(first){
+                if (first) {
                     System.out.print(", ");
                 }
                 System.out.print(game.getDoors().get(i).getConnector()[1].getName());
                 first = true;
             } else if (game.getDoors().get(i).getConnector()[1] == game.getRooms().get(activeRoom)) {
-                if(first){
+                if (first) {
                     System.out.print(", ");
                 }
                 System.out.print(game.getDoors().get(i).getConnector()[0].getName());
                 first = true;
             }
         }
-    }
-
-    private static void colors() {
-        final String ANSI_RESET = "\u001B[0m";
-        final String ANSI_BLACK = "\u001B[30m";
-        final String ANSI_RED = "\u001B[31m";
-        final String ANSI_GREEN = "\u001B[32m";
-        final String ANSI_YELLOW = "\u001B[33m";
-        final String ANSI_BLUE = "\u001B[34m";
-        final String ANSI_PURPLE = "\u001B[35m";
-        final String ANSI_CYAN = "\u001B[36m";
-        final String ANSI_WHITE = "\u001B[37m";
     }
 
 }
