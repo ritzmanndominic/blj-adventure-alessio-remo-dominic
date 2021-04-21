@@ -19,15 +19,28 @@ public class StoreScore {
         oos.close();
     }
 
-    public static void readObject(String fileToReadForm) throws IOException, ClassNotFoundException{
+    public static void loadData(String fileToReadForm, Player player1, Game game) throws IOException, ClassNotFoundException {
+        int activeRoom = 0;
         FileInputStream fis = new FileInputStream(fileToReadForm);
         ObjectInputStream ois = new ObjectInputStream(fis);
 
         ArrayList<String> arrayList = (ArrayList<String>) ois.readObject();
         ois.close();
 
-        for (String entry : arrayList){
-            System.out.println(entry);
+        for (int i = 0; i < game.getRooms().size(); i++) {
+            if (arrayList.get(0).equals(game.getRooms().get(i).getName())) {
+                activeRoom = i;
+            }
+        }
+        game.setActiveRoom(activeRoom);
+
+        arrayList.remove(0);
+        for (int j = 0; j < game.getItems().size(); j++) {
+            for (int i = 0; i < arrayList.size(); i++) {
+                if (arrayList.get(i).equals(game.getItems().get(j).getName())) {
+                    player1.getItemList().add(game.getItems().get(i));
+                }
+            }
         }
     }
 }
