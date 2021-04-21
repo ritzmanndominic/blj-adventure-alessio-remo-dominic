@@ -59,6 +59,7 @@ public class Game {
     public void move(Game game) {
         boolean validMove = false;
         String newRoom;
+        String cancel = "x";
         do {
             System.out.print("\nType in the room you want to go in: ");
             newRoom = io.scn.nextLine();
@@ -76,13 +77,13 @@ public class Game {
                     }
                 }
             }
-            if (newRoom.equals("X")) {
+            if (newRoom.equals(cancel)) {
                 validMove = true;
             } else {
                 if (validMove) {
                     System.out.println("You entered the " + newRoom);
                 } else {
-                    System.out.print("The room could not be found, try again");
+                    System.out.print("The room could not be found, try again or press \"x\" to cancel");
                 }
             }
         } while (!validMove);
@@ -90,9 +91,8 @@ public class Game {
 
     public void inspectRoom(Player player) {
         System.out.println("You have found " + rooms.get(getActiveRoom()).getItemsArrayList().get(getActiveRoom()).getName());
-        int lives = player.getLives();
         if (rooms.get(getActiveRoom()).getItemsArrayList().get(getActiveRoom()).isAlarm()) {
-            player.setLives(lives - 1);
+            player.setLives(player.getLives() - 1);
         }
     }
 
