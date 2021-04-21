@@ -8,7 +8,8 @@ public class Room {
     private ArrayList<Items> itemsArrayList = new ArrayList<>();
     private ArrayList<String> commands = new ArrayList<>(Arrays.asList("north", "east", "south", "west"));
 
-    public Room(){}
+    public Room() {
+    }
 
     public Room(String name) {
         this.name = name;

@@ -7,7 +7,8 @@ public class Player {
     private int lives;
 
 
-    public Player(){}
+    public Player() {
+    }
 
     public Player(ArrayList<Items> itemList, int lives) {
         this.itemList = itemList;

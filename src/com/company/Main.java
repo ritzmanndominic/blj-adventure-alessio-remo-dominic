@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.ArrayList;
-
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -15,12 +13,8 @@ public class Main {
         game.createItems(game.getItems());
         game.addItems(game.getRooms(), game.getItems());
         StoreScore.saveObject("bananen", game);
-        /*
-        io.map();
-        io.printBorder("Balcony ");
-        game.move(game);
-        */
+
         io.switcher(game, player1);
-       // StoreScore.readObject("bananen");
+        // StoreScore.readObject("bananen");
     }
 }

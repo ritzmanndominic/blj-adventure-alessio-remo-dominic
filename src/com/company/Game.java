@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Game {
 
@@ -51,7 +50,6 @@ public class Game {
     }
 
 
-
     public void move(Game game) {
         boolean validMove = false;
         String newRoom;
@@ -73,13 +71,15 @@ public class Game {
                     }
                 }
             }
-            if (newRoom.equals("X")){System.out.println("Exit");
-            }else {
-            System.out.println(validMove);}
+            if (newRoom.equals("X")) {
+                System.out.println("Exit");
+            } else {
+                System.out.println(validMove);
+            }
         } while (!(newRoom.equals("X")));
     }
 
-    public void inspectRoom(Player player){
+    public void inspectRoom(Player player) {
         System.out.println("You have found " + rooms.get(getActiveRoom()).getItemsArrayList().get(getActiveRoom()).getName());
         int lives = 3;
         if (rooms.get(getActiveRoom()).getItemsArrayList().get(getActiveRoom()).isAlarm()) {
