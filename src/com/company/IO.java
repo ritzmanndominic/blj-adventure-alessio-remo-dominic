@@ -90,4 +90,8 @@ public class IO {
         System.out.println("\u255D");
     }
 
+    public void activeRoom(int activeroom, Game game){
+        System.out.println(game.getDoors().get(activeroom).getConnector());
+    }
+
 }
