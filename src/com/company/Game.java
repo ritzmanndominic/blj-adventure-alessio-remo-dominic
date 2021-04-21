@@ -90,13 +90,18 @@ public class Game {
     }
 
     public void inspectRoom(Player player) {
-        System.out.println("You have found " + getItems().get(getActiveRoom()).getName());
-        if (getItems().get(getActiveRoom()).isAlarm()) {
-            player.setLives(player.getLives() - 1);
-            getItems().remove(getActiveRoom());
-            player.getItemList().add(getItems().get(getActiveRoom()));
+        if (!getItems().get(getActiveRoom()).getName().isEmpty()) {
+            System.out.println("You have found " + getItems().get(getActiveRoom()).getName());
+            if(getItems().get(getActiveRoom()).isAlarm()) {
+                player.setLives(player.getLives() - 1);
+                player.getItemList().add(getItems().get(getActiveRoom()));
+            }
+            else if (player.getLives() < 3) {
+                player.setLives(player.getLives() + 1);
+            }
+            getItems().get(getActiveRoom()).setName("");
         }
-        if (getItems().get(getActiveRoom()).getName().isEmpty()) {
+        else {
             System.out.println("no item in this room");
         }
         if (player.getLives() == 0) {
