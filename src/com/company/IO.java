@@ -22,7 +22,7 @@ public class IO {
                 case 2 -> System.out.println((game.getRooms().get(game.getActiveRoom()).getName()));
 
                 //print possible rooms
-                case 3 -> possibleRoom(5, game);
+                case 3 -> possibleRoom(game.getActiveRoom(), game);
 
                 //move between rooms
                 case 4-> game.move(game);

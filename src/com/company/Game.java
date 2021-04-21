@@ -56,7 +56,6 @@ public class Game {
         boolean validMove = false;
         String newRoom;
         do {
-            io.possibleRoom(activeRoom, game);
             validMove = false;
             System.out.println("Type in the room you want to go in: \n");
             newRoom = io.scn.nextLine();
