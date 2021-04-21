@@ -128,9 +128,24 @@ public class IO {
         System.out.println("\u255D");
     }
 
-    public void possibleRoom(int activeroom, Game game) {
-        Room[] rooms = game.getDoors().get(activeroom).getConnector();
-        System.out.println("Possible rooms: " + rooms[0].getName() + ", " + rooms[1].getName());
+    public void possibleRoom(int activeRoom, Game game) {
+        System.out.print("Possible rooms: ");
+        boolean first = false;
+        for (int i = 0; i < game.getDoors().size(); i++) {
+            if (game.getDoors().get(i).getConnector()[0] == game.getRooms().get(activeRoom)) {
+                if(first){
+                    System.out.print(", ");
+                }
+                System.out.print(game.getDoors().get(i).getConnector()[1].getName());
+                first = true;
+            } else if (game.getDoors().get(i).getConnector()[1] == game.getRooms().get(activeRoom)) {
+                if(first){
+                    System.out.print(", ");
+                }
+                System.out.print(game.getDoors().get(i).getConnector()[0].getName());
+                first = true;
+            }
+        }
     }
 
     private static void colors() {
