@@ -165,4 +165,28 @@ public class IO {
         System.out.println("\n");
     }
 
+
+    public void printHeart(int amount) {
+        System.out.println("\u001B[31m");
+        for (int i = 0; i < amount; i++) {
+            System.out.print("  ░░░░   ░░░░  ");
+        }
+        System.out.println();
+        for (int i = 0; i < amount; i++) {
+            System.out.print(" ░░░░░░ ░░░░░░ ");
+        }
+        System.out.println();
+        for (int i = 0; i < amount; i++) {
+            System.out.print("  ░░░░░░░░░░░  ");
+        }
+        System.out.println();
+        for (int i = 0; i < amount; i++) {
+            System.out.print("    ░░░░░░░    ");
+        }
+        System.out.println();
+        for (int i = 0; i < amount; i++) {
+            System.out.print("      ░░░      ");
+        }
+        System.out.println("\u001B[0m");
+    }
 }
