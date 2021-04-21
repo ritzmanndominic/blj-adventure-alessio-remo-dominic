@@ -166,8 +166,13 @@ public class IO {
     }
 
 
-    public void printHeart(int amount) {
-        System.out.println("\u001B[31m");
+    public void printHeart(int amount, String color) {
+        if (color.equals("red")) {
+            System.out.println("\u001B[31m");
+        }
+        else {
+            System.out.println("\u001B[32m");
+        }
         for (int i = 0; i < amount; i++) {
             System.out.print("  ░░░░   ░░░░  ");
         }
@@ -187,6 +192,6 @@ public class IO {
         for (int i = 0; i < amount; i++) {
             System.out.print("      ░░░      ");
         }
-        System.out.println("\u001B[0m");
+        System.out.println("\n\u001B[0m");
     }
 }

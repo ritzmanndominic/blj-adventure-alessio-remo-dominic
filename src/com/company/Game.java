@@ -93,11 +93,16 @@ public class Game {
         if (!getItems().get(getActiveRoom()).getName().isEmpty()) {
             System.out.println("You have found " + getItems().get(getActiveRoom()).getName());
             if(getItems().get(getActiveRoom()).isAlarm()) {
+                System.out.println("Oh no I shouldn't have taken that!");
+                System.out.println("\u001B[31myou lost a life\u001B[0m");
                 player.setLives(player.getLives() - 1);
+                io.printHeart(player.getLives(), "red");
                 player.getItemList().add(getItems().get(getActiveRoom()));
             }
             else if (player.getLives() < 3) {
                 player.setLives(player.getLives() + 1);
+                System.out.println("\u001B[32mnice! I got an extra life\u001B[0m");
+                io.printHeart(player.getLives(), "green");
             }
             getItems().get(getActiveRoom()).setName("");
         }
