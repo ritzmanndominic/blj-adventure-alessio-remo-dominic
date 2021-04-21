@@ -13,9 +13,11 @@ public class Main {
         game.addRoom(game.getRooms(), game.getDoors());
         game.createItems(game.getItems());
         game.addItems(game.getRooms(), game.getItems());
-
+        /*
         io.map();
         io.printBorder("Balcony ");
         game.move(game);
+        */
+        io.switcher(game);
     }
 }
