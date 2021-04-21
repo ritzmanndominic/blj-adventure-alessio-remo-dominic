@@ -94,6 +94,10 @@ public class Game {
         if (getItems().get(getActiveRoom()).isAlarm()) {
             player.setLives(player.getLives() - 1);
         }
+        if (player.getLives() == 0) {
+            System.out.println("\u001B[31myou have died\u001B[0m");
+            System.exit(0);
+        }
     }
 
     public int getActiveRoom() {

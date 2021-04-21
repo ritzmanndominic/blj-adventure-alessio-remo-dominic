@@ -9,7 +9,7 @@ public class IO {
     Scanner scn = new Scanner(System.in);
 
 
-    public void switcher(Game game, Player player) throws IOException, ClassNotFoundException {
+    public void switcher(Game game, Player player) throws Exception {
 
         do {
             map(game);
@@ -25,11 +25,14 @@ public class IO {
                 //check if room has item
                 case 3 -> game.inspectRoom(player);
 
-                //Exit program
-                case 4 -> System.exit(0);
+                //save Data
+                case 4 -> StoreScore.saveObject("Store_Location-Items", player, game);
 
                 //Load Data
                 case 5 -> StoreScore.loadData("Store_Location-Items", player, game);
+
+                //Exit program
+                case 6 -> System.exit(0);
             }
         } while (choice != 4);
 
@@ -105,7 +108,7 @@ public class IO {
         drawMultipleBox(20, 4, 4, game, "", "Balcony", "Balcony", "Balcony",
                 "Bathroom", "Livingroom", "Livingroom", "Gym", "Storeroom", "Bedroom", "Bedroom", "Kitchen", "", "Toilet", "Secretroom", "Office");
         System.out.println("\u001B[36m");
-        drawMultipleBox(24, 4, 1, game, " 1: Print out the possible rooms ",  " 2: Move between rooms", "3: to inspect the room", "4: Exit Program", "5: Load old data" );
+        drawMultipleBox(24, 4, 2, game, " 1: Print out the possible rooms ",  " 2: Move between rooms", "3: to inspect the room", "4: Save data", "5: Load old data", "6: exit game");
         System.out.print("\u001B[0m");
     }
 
