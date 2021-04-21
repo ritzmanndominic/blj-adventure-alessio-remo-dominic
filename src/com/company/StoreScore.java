@@ -8,6 +8,9 @@ public class StoreScore {
     public static void saveObject(String fileWriteTo, Game game) throws Exception{
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(game.getRooms().get(game.getActiveRoom()).getName());
+        for (int i=0; i < game.getItems().size(); i++){
+            arrayList.add(game.getItems().get(i).getName());
+        }
 
         FileOutputStream fos = new FileOutputStream(fileWriteTo);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
