@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Game {
 
-    private ArrayList<Room> rooms = new ArrayList<>();
-    private ArrayList<Items> items = new ArrayList<>();
-    private ArrayList<Door> doors = new ArrayList<>();
+    private final ArrayList<Room> rooms = new ArrayList<>();
+    private final ArrayList<Items> items = new ArrayList<>();
+    private final ArrayList<Door> doors = new ArrayList<>();
     private int activeRoom = 5;
 
     IO io = new IO();
@@ -34,7 +34,7 @@ public class Game {
     }
 
     public void createRooms(ArrayList<Room> rooms) {
-        String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "Livingroom", "Secretroom"};
+        String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "Living room", "Secret room"};
         for (String roomName : RoomNames) {
             Room room = new Room(roomName);
             rooms.add(room);
@@ -56,7 +56,7 @@ public class Game {
         }
     }
     
-    public void move(Game game) {
+    public void move() {
         boolean validMove = false;
         String newRoom;
         String cancel = "x";
@@ -127,35 +127,16 @@ public class Game {
         this.activeRoom = activeRoom;
     }
 
-    public IO getIo() {
-        return io;
-    }
-
-    public void setIo(IO io) {
-        this.io = io;
-    }
-
     public ArrayList<Room> getRooms() {
         return rooms;
-    }
-
-    public void setRooms(ArrayList<Room> rooms) {
-        this.rooms = rooms;
     }
 
     public ArrayList<Items> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<Items> items) {
-        this.items = items;
-    }
-
     public ArrayList<Door> getDoors() {
         return doors;
     }
 
-    public void setDoors(ArrayList<Door> doors) {
-        this.doors = doors;
-    }
 }

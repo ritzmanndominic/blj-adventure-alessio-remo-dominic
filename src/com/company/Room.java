@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 public class Room {
     private String name;
-    private ArrayList<Items> itemsArrayList = new ArrayList<>();
-    private ArrayList<String> commands = new ArrayList<>(Arrays.asList("north", "east", "south", "west"));
+    private final ArrayList<Items> itemsArrayList = new ArrayList<>();
+
 
     public Room() {
     }
@@ -27,15 +27,4 @@ public class Room {
         return itemsArrayList;
     }
 
-    public void setItemsArrayList(ArrayList<Items> itemsArrayList) {
-        this.itemsArrayList = itemsArrayList;
-    }
-
-    public ArrayList<String> getCommands() {
-        return commands;
-    }
-
-    public void setCommands(ArrayList<String> commands) {
-        this.commands = commands;
-    }
 }

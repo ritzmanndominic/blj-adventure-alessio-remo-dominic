@@ -1,16 +1,15 @@
 package com.company;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class IO {
 
-    private int choice;
     Scanner scn = new Scanner(System.in);
 
 
     public void switcher(Game game, Player player) throws Exception {
 
+        int choice;
         do {
             map(game);
             choice = scn.nextInt();
@@ -20,7 +19,7 @@ public class IO {
                 case 1 -> possibleRoom(game.getActiveRoom(), game);
 
                 //move between rooms
-                case 2 -> game.move(game);
+                case 2 -> game.move();
 
                 //check if room has item
                 case 3 -> game.inspectRoom(player);
@@ -48,7 +47,6 @@ public class IO {
         final String CORNER_3 = "\u255D";
         final String CORNER_4 = "\u255A";
         final String SPACE = " ";
-        final String BULLET = "\u2022";
         int[] lengthDifference;
 
         for (String s : strings) {
@@ -106,42 +104,10 @@ public class IO {
     public void map(Game game) {
         System.out.print("\u001B[0m");
         drawMultipleBox(20, 4, 4, game, "", "Balcony", "Balcony", "Balcony",
-                "Bathroom", "Livingroom", "Livingroom", "Gym", "Storeroom", "Bedroom", "Bedroom", "Kitchen", "", "Toilet", "Secretroom", "Office");
+                "Bathroom", "Living room", "Living room", "Gym", "Storeroom", "Bedroom", "Bedroom", "Kitchen", "", "Toilet", "Secret room", "Office");
         System.out.println("\u001B[36m");
         drawMultipleBox(24, 3, 2, game, " 1: Print out the possible rooms ",  " 2: Move between rooms", "3: to inspect the room", "4: Save data", "5: Load old data", "6: exit game");
         System.out.print("\u001B[0m");
-    }
-
-
-    public void printBorder(String word) {
-        System.out.println("[" + word + "]");
-        int positionDoor = word.length() + word.length() + 10;
-        //print top of box
-        System.out.print("\u2554");
-        for (int i = 0; i < positionDoor; i++) {
-            System.out.print("\u2550");
-        }
-        System.out.println("\u2557");
-        //print middle of box
-        System.out.print("\u2551");
-        for (int x = 0; x < (word.length() + 10) / 2; x++) {
-            System.out.print(" ");
-        }
-        System.out.print(word);
-        for (int x = 0; x < (word.length() + 10) / 2; x++) {
-            System.out.print(" ");
-        }
-        System.out.println("\u2551");
-        //print bottom if box
-        System.out.print("\u255A");
-        for (int i = 0; i < positionDoor; i++) {
-            if (positionDoor / 4 == i || positionDoor - (positionDoor / 4) == i) {
-                System.out.print("\u2573");
-            } else {
-                System.out.print("\u2550");
-            }
-        }
-        System.out.println("\u255D");
     }
 
     public void possibleRoom(int activeRoom, Game game) {
