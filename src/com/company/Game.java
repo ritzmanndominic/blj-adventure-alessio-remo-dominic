@@ -83,6 +83,10 @@ public class Game {
         } while (!(newRoom.equals("X")));
     }
 
+    public void activeRoom(int activeroom, Game game){
+        System.out.println(game.getDoors().get(activeroom).getConnector());
+    }
+
     public ArrayList<Room> getRooms() {
         return rooms;
     }
