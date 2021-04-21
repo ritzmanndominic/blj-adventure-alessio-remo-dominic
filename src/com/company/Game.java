@@ -57,7 +57,8 @@ public class Game {
         doors.get(11).setConnector(new Room[]{rooms.get(0), rooms.get(9)});
     }
 
-    public void move() {
+    public void move(Game game) {
+        io.activeRoom(activeRoom, game);
         boolean validMove = false;
         String newRoom;
         do {
