@@ -20,7 +20,12 @@ public class Main {
         io.printBorder("Balcony ");
         game.move(game);
         */
+<<<<<<< Updated upstream
         io.switcher(game, player1);
        // StoreScore.readObject("bananen");
+=======
+        io.switcher(game, player);
+      //  StoreScore.readObject("bananen");
+>>>>>>> Stashed changes
     }
 }
