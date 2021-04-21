@@ -4,7 +4,33 @@ import java.util.Scanner;
 
 public class IO {
 
+    private int chooice;
     Scanner scn = new Scanner(System.in);
+
+
+    public void switcher(Game game) {
+
+        do {
+            System.out.println("\n1: Print out the Map\t 2: Print out the active Room you're in\t\t 3: Print out the possible rooms \t 4: Exit Program ");
+            chooice = scn.nextInt();
+
+            switch (chooice) {
+                //print out map
+                case 1 -> map();
+
+                //print active room
+                case 2 -> activeRoom(5, game);
+
+                //print possible rooms
+                case 3 -> activeRoom(5, game);
+
+                case 4 -> System.exit(0);
+            }
+        } while (chooice != 4);
+
+
+    }
+
 
     public static void drawMultipleBox(int maxLength, int width, int height, String... strings) {
         final String HO_LINE = "\u2550";
@@ -41,6 +67,7 @@ public class IO {
             System.out.println();
         }
     }
+
     private static int[] getLength(int maxLength, int usedLength) {
         int[] lengthDifference = new int[3];
         lengthDifference[0] = maxLength - usedLength;
@@ -56,11 +83,11 @@ public class IO {
     public void map() {
         System.out.println("[Map]");
         drawMultipleBox(20, 3, 4, "", "Balcony", "Balcony",
-        "Bathroom", "Livingroom", "Gym", "Storeroom", "Bedroom", "Kitchen", "Toilet", "*Secretroom*", "Office");
+                "Bathroom", "Livingroom", "Gym", "Storeroom", "Bedroom", "Kitchen", "Toilet", "*Secretroom*", "Office");
     }
 
     public void printBorder(String word) {
-        System.out.println("["+ word + "]");
+        System.out.println("[" + word + "]");
         int positionDoor = word.length() + word.length() + 10;
         //print top of box
         System.out.print("\u2554");
@@ -81,7 +108,7 @@ public class IO {
         //print bottom if box
         System.out.print("\u255A");
         for (int i = 0; i < positionDoor; i++) {
-            if (positionDoor /4 == i ||  positionDoor - (positionDoor /4) == i) {
+            if (positionDoor / 4 == i || positionDoor - (positionDoor / 4) == i) {
                 System.out.print("\u2573");
             } else {
                 System.out.print("\u2550");
@@ -90,7 +117,7 @@ public class IO {
         System.out.println("\u255D");
     }
 
-    public void activeRoom(int activeroom, Game game){
+    public void activeRoom(int activeroom, Game game) {
         Room[] rooms = game.getDoors().get(activeroom).getConnector();
         System.out.println("Possible rooms: " + rooms[0].getName() + ", " + rooms[1].getName());
     }
