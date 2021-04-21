@@ -19,7 +19,7 @@ public class IO {
                 case 1 -> map();
 
                 //print active room
-                case 2 -> System.out.println(game.getActiveRoom());
+                case 2 -> System.out.println((game.getRooms().get(game.getActiveRoom()).getName()));
 
                 //print possible rooms
                 case 3 -> possibleRoom(5, game);
