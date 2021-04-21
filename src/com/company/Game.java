@@ -55,19 +55,18 @@ public class Game {
             rooms.get(i).getItemsArrayList().add(items.get(i));
         }
     }
-
-
+    
     public void move(Game game) {
         boolean validMove = false;
         String newRoom;
         do {
             System.out.print("\nType in the room you want to go in: ");
             newRoom = io.scn.nextLine();
-            for (int i = 0; i < doors.size(); i++) {
-                if (doors.get(i).getConnector()[0].getName().toLowerCase().equals(newRoom.toLowerCase()) ||
-                        doors.get(i).getConnector()[1].getName().toLowerCase().equals(newRoom.toLowerCase())) {
-                    if (doors.get(i).getConnector()[0].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase()) ||
-                            doors.get(i).getConnector()[1].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase())) {
+            for (Door door : doors) {
+                if (door.getConnector()[0].getName().toLowerCase().equals(newRoom.toLowerCase()) ||
+                        door.getConnector()[1].getName().toLowerCase().equals(newRoom.toLowerCase())) {
+                    if (door.getConnector()[0].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase()) ||
+                            door.getConnector()[1].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase())) {
                         validMove = true;
                         for (int j = 0; j < rooms.size(); j++) {
                             if (newRoom.toLowerCase().equals(rooms.get(j).getName().toLowerCase())) {
@@ -77,10 +76,14 @@ public class Game {
                     }
                 }
             }
-            if (validMove) {
-                System.out.println("You entered the " + newRoom);
+            if (newRoom.equals("X")) {
+                validMove = true;
             } else {
-                System.out.print("The room could not be found, try again");
+                if (validMove) {
+                    System.out.println("You entered the " + newRoom);
+                } else {
+                    System.out.print("The room could not be found, try again");
+                }
             }
         } while (!validMove);
     }
