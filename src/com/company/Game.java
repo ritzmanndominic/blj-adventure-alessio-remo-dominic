@@ -61,7 +61,7 @@ public class Game {
         boolean validMove = false;
         String newRoom;
         do {
-            io.activeRoom(activeRoom, game);
+            io.possibleRoom(activeRoom, game);
             validMove = false;
             System.out.println("Type in the room you want to go in: \n");
             newRoom = io.scn.nextLine();
@@ -81,6 +81,22 @@ public class Game {
             }
             System.out.println(validMove);
         } while (!(newRoom.equals("X")));
+    }
+
+    public int getActiveRoom() {
+        return activeRoom;
+    }
+
+    public void setActiveRoom(int activeRoom) {
+        this.activeRoom = activeRoom;
+    }
+
+    public IO getIo() {
+        return io;
+    }
+
+    public void setIo(IO io) {
+        this.io = io;
     }
 
     public ArrayList<Room> getRooms() {

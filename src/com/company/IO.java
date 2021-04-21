@@ -19,10 +19,10 @@ public class IO {
                 case 1 -> map();
 
                 //print active room
-                case 2 -> activeRoom(5, game);
+                case 2 -> System.out.println(game.getActiveRoom());
 
                 //print possible rooms
-                case 3 -> activeRoom(5, game);
+                case 3 -> possibleRoom(5, game);
 
                 case 4 -> System.exit(0);
             }
@@ -117,7 +117,7 @@ public class IO {
         System.out.println("\u255D");
     }
 
-    public void activeRoom(int activeroom, Game game) {
+    public void possibleRoom(int activeroom, Game game) {
         Room[] rooms = game.getDoors().get(activeroom).getConnector();
         System.out.println("Possible rooms: " + rooms[0].getName() + ", " + rooms[1].getName());
     }
