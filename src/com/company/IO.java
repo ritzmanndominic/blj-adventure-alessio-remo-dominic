@@ -101,7 +101,7 @@ public class IO {
         drawMultipleBox(20, 4, 4, game, "", "Balcony", "Balcony", "Balcony",
                 "Bathroom", "Livingroom", "Livingroom", "Gym", "Storeroom", "Bedroom", "Bedroom", "Kitchen", "", "Toilet", "*Secretroom*", "Office");
         System.out.print("\u001B[36m");
-        drawMultipleBox(24, 1, 4, game, "1: Print out the possible rooms",  " 2: Move between rooms (X for exit)  ", "3: to inspect the room", "4: Exit Program" );
+        drawMultipleBox(24, 2, 4, game, "1: Print out the possible rooms",  " 2: Move between rooms (X for exit)  ", "3: to inspect the room", "4: Exit Program" );
     }
 
 
