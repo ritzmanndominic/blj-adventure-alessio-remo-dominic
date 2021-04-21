@@ -12,9 +12,9 @@ public class Main {
         game.createDoors(game.getRooms(), game.getDoors());
         game.createItems(game.getItems());
         game.addItems(game.getRooms(), game.getItems());
-        StoreScore.saveObject("bananen", game);
+        StoreScore.saveObject("Store_Location-Items", player1, game);
 
         io.switcher(game, player1);
-        // StoreScore.readObject("bananen");
+        // StoreScore.readObject("Store_Location-Items");
     }
 }
