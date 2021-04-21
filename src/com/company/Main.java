@@ -9,9 +9,7 @@ public class Main {
         Player player = new Player();
         Player player1 = new Player(player.getItemList(), 3);
         game.manage(game.getItems(), game.getDoors(), game.getRooms());
-        StoreScore.saveObject("Store_Location-Items", player1, game);
-      //  StoreScore.loadData("Store_Location-Items", player1, game);
         io.switcher(game, player1);
-
+        StoreScore.saveObject("Store_Location-Items", player1, game);
     }
 }
