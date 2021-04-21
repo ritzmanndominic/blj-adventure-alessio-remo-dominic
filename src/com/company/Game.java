@@ -73,7 +73,9 @@ public class Game {
                     }
                 }
             }
-            System.out.println(validMove);
+            if (newRoom.equals("X")){System.out.println("Exit");
+            }else {
+            System.out.println(validMove);}
         } while (!(newRoom.equals("X")));
     }
 
