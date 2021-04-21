@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class IO {
@@ -16,7 +17,7 @@ public class IO {
 
             switch (choice) {
                 //print out map
-                case 1 -> map();
+                case 1 -> map(game);
 
                 //print active room
                 case 2 -> System.out.println((game.getRooms().get(game.getActiveRoom()).getName()));
@@ -25,7 +26,7 @@ public class IO {
                 case 3 -> possibleRoom(game.getActiveRoom(), game);
 
                 //move between rooms
-                case 4-> game.move(game);
+                case 4 -> game.move(game);
 
                 //check if room has item
                 case 5 -> game.inspectRoom(player);
@@ -39,7 +40,7 @@ public class IO {
     }
 
 
-    public static void drawMultipleBox(int maxLength, int width, int height, String... strings) {
+    public static void drawMultipleBox(int maxLength, int width, int height, Game game, String... strings) {
         final String HO_LINE = "\u2550";
         final String VER_LINE = "\u2551";
         final String CORNER_1 = "\u2554";
@@ -49,6 +50,7 @@ public class IO {
         final String SPACE = " ";
         final String BULLET = "\u2022";
         int[] lengthDifference;
+
         for (String s : strings) {
             maxLength = Math.max(s.length(), maxLength);
         }
@@ -63,7 +65,9 @@ public class IO {
                 String printText;
                 if (k * width + j < strings.length) printText = strings[k * width + j];
                 else printText = "";
+                printText = printText.replace(game.getRooms().get(game.getActiveRoom()).getName(), "\u001B[35m" + printText + "\u001B[0m");
                 lengthDifference = getLength(maxLength, printText.length());
+
                 System.out.print(VER_LINE + SPACE.repeat(lengthDifference[leftDistance]) + printText +
                         SPACE.repeat(lengthDifference[rightDistance]) + VER_LINE + SPACE.repeat(2));
             }
@@ -87,9 +91,9 @@ public class IO {
         return lengthDifference;
     }
 
-    public void map() {
+    public void map(Game game) {
         System.out.println("[Map]");
-        drawMultipleBox(20, 4, 4,  "", "Balcony", "Balcony", "Balcony",
+        drawMultipleBox(20, 4, 4, game, "Balcony", "Balcony", "Balcony",
                 "Bathroom", "Livingroom", "Livingroom", "Gym", "Storeroom", "Bedroom", "Bedroom", "Kitchen", "", "Toilet", "*Secretroom*", "Office");
     }
 
@@ -127,6 +131,18 @@ public class IO {
     public void possibleRoom(int activeroom, Game game) {
         Room[] rooms = game.getDoors().get(activeroom).getConnector();
         System.out.println("Possible rooms: " + rooms[0].getName() + ", " + rooms[1].getName());
+    }
+
+    private static void colors() {
+        final String ANSI_RESET = "\u001B[0m";
+        final String ANSI_BLACK = "\u001B[30m";
+        final String ANSI_RED = "\u001B[31m";
+        final String ANSI_GREEN = "\u001B[32m";
+        final String ANSI_YELLOW = "\u001B[33m";
+        final String ANSI_BLUE = "\u001B[34m";
+        final String ANSI_PURPLE = "\u001B[35m";
+        final String ANSI_CYAN = "\u001B[36m";
+        final String ANSI_WHITE = "\u001B[37m";
     }
 
 }
