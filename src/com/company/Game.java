@@ -12,7 +12,7 @@ public class Game {
 
     IO io = new IO();
 
-    public void manage(ArrayList<Items> items, ArrayList<Door> doors, ArrayList<Room> rooms){
+    public void manage(ArrayList<Items> items, ArrayList<Door> doors, ArrayList<Room> rooms) {
         createRooms(rooms);
         createDoors(rooms, doors);
         createItems(items);
@@ -55,10 +55,10 @@ public class Game {
         for (int i = 0; i < rooms.size(); i++) {
             Random random = new Random();
             int randomNumber = random.nextInt(items.size());
-            rooms.get(i).getItemsArrayList().add(items.get(randomNumber));
+            rooms.get(randomNumber).getItemsArrayList().add(items.get(i));
         }
     }
-    
+
     public void move() {
         boolean validMove = false;
         String newRoom;
@@ -93,33 +93,49 @@ public class Game {
     }
 
     public void inspectRoom(Player player) {
-        if (!getItems().get(getActiveRoom()).getName().isEmpty()) {
-            System.out.println("You have found " + getItems().get(getActiveRoom()).getName());
-            if(getItems().get(getActiveRoom()).isAlarm()) {
+        //counts the amount of items in the current room
+        int amountItems = 0;
+        for (Items itemInRoom : getRooms().get(getActiveRoom()).getItemsArrayList()) {
+            if (!itemInRoom.getName().isEmpty()) {
+                amountItems++;
+            }
+        }
+        //checks if room has items
+        if (amountItems > 0) {
+            //a random number will be generated, until a valid item could be found
+            Random random = new Random();
+            int randomNumber;
+            do {
+                randomNumber = random.nextInt(getRooms().get(getActiveRoom()).getItemsArrayList().size());
+            } while (getRooms().get(getActiveRoom()).getItemsArrayList().get(randomNumber).getName().isEmpty());
+            System.out.println("You have found " +
+                    getRooms().get(getActiveRoom()).getItemsArrayList().get(randomNumber).getName());
+            //if the item has an alarm player will get damage
+            if (getRooms().get(getActiveRoom()).getItemsArrayList().get(randomNumber).isAlarm()) {
                 System.out.println("Oh no I shouldn't have taken that!");
                 System.out.println("\u001B[31myou lost a life\u001B[0m");
                 player.setLives(player.getLives() - 1);
                 io.printHeart(player.getLives(), "red");
-                player.getItemList().add(getItems().get(getActiveRoom()));
             }
+            //if player has not the max amount of lives a live will be added
             else if (player.getLives() < player.getMaxLives()) {
                 player.setLives(player.getLives() + 1);
                 System.out.println("\u001B[32mnice! I got an extra life\u001B[0m");
                 io.printHeart(player.getLives(), "green");
-            }
-            else {
+            } else {
                 io.printHeart(player.getLives(), "normal");
             }
-            getItems().get(getActiveRoom()).setName("");
+            //the item will be added to player inventory and removed/overwritten from current room
+            player.getItemList().add(getRooms().get(getActiveRoom()).getItemsArrayList().get(randomNumber));
+            getRooms().get(getActiveRoom()).getItemsArrayList().get(randomNumber).setName("");
+        } else {
+            System.out.println("There seems to be no item in this room");
         }
-        else {
-            System.out.println("no item in this room");
-        }
+        //checks if player died
         if (player.getLives() == 0) {
             System.out.println("\u001B[31myou have died\u001B[0m");
             System.exit(0);
         }
-
     }
 
     public int getActiveRoom() {
