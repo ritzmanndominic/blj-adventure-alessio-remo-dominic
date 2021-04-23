@@ -11,6 +11,6 @@ public class Main {
         Player player1 = new Player(player.getItemList(), 3);
         game.manage(game.getItems(), game.getDoors(), game.getRooms());
         io.switcher(game, player1);
-        StoreScore.saveObject("Store_Location-Items", player1, game);
+        game.fight("Fight", player1);
     }
 }

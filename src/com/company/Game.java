@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
 
@@ -135,6 +136,36 @@ public class Game {
         if (player.getLives() == 0) {
             System.out.println("\u001B[31myou have died\u001B[0m");
             System.exit(0);
+        }
+    }
+
+    public void fight(String answer, Player player){
+        Scanner scanner = new Scanner(System.in);
+
+        if (answer.equals("Fight")){
+            System.out.println("attack, heal or defend");
+            String choose = scanner.nextLine();
+
+            switch (choose){
+                case "attack":
+                    break;
+
+                case "heal":
+                    if (player.getLives() != 3){
+                    player.setLives(player.getLives() + 1);
+                }else {
+                        System.out.println("Your full");
+                    }
+                    break;
+
+                case "defend":
+                    break;
+
+                default:
+                    System.out.println("error");
+            }
+        }else if (answer.equals("Run")){
+            move();
         }
     }
 
