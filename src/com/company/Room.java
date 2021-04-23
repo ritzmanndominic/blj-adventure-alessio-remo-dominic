@@ -26,9 +26,6 @@ public class Room {
     public ArrayList<Items> getItemsArrayList() {
         return itemsArrayList;
     }
-<<<<<<< Updated upstream
-=======
 
     public void setItemsArrayList(ArrayList<Items> itemsArrayList) { this.itemsArrayList = itemsArrayList; }
->>>>>>> Stashed changes
 }
