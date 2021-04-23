@@ -35,7 +35,7 @@ public class Game {
     }
 
     public void createRooms(ArrayList<Room> rooms) {
-        String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "Living room", "Secret room"};
+        String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "Livingroom", "Secretroom"};
         for (String roomName : RoomNames) {
             Room room = new Room(roomName);
             rooms.add(room);
