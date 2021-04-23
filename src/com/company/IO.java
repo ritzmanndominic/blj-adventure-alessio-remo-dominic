@@ -1,19 +1,19 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class IO {
 
     Scanner scn = new Scanner(System.in);
 
-
     public void switcher(Game game, Player player) throws Exception {
 
         int choice;
         do {
             map(game);
-            choice = scn.nextInt();
+            choice = readRangedInt(1, 7);
 
             switch (choice) {
                 //print possible rooms
@@ -38,8 +38,6 @@ public class IO {
                 case 7 -> System.exit(0);
             }
         } while (choice != 7);
-
-
     }
 
 
@@ -178,9 +176,32 @@ public class IO {
             System.out.println("Your inventory is empty, collect items with the inspect room command");
         } else {
             System.out.println("[Inventory]");
+
             drawMultipleBox(20, amountBoxesInRow, (player.getItemList().size() / amountBoxesInRow + 1),
                     game, name);
         }
         System.out.println("\n");
     }
+
+    public static int readRangedInt(int min, int max) {
+        Scanner scn = new Scanner(System.in);
+        int input = -1;
+
+        try {
+            input = scn.nextInt();
+        } catch (InputMismatchException var6) {
+            scn.nextLine();
+        }
+
+        while (input < min || input > max) {
+            System.out.println("There was an Error, please repeat your input");
+            try {
+                input = scn.nextInt();
+            } catch (InputMismatchException var5) {
+                scn.nextLine();
+            }
+        }
+        return input;
+    }
+
 }
