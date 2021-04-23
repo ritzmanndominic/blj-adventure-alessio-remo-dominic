@@ -1,13 +1,11 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Room {
     private String name;
     private ArrayList<Items> itemsArrayList = new ArrayList<>();
-
-
+    
     public Room() {
     }
 
@@ -26,9 +24,6 @@ public class Room {
     public ArrayList<Items> getItemsArrayList() {
         return itemsArrayList;
     }
-<<<<<<< Updated upstream
-=======
 
     public void setItemsArrayList(ArrayList<Items> itemsArrayList) { this.itemsArrayList = itemsArrayList; }
->>>>>>> Stashed changes
 }
