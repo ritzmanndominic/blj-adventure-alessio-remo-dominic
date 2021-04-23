@@ -168,13 +168,19 @@ public class IO {
     }
 
     public void printInventory(Player player, Game game) {
+        int amountBoxesInRow = 3;
         String[] name = new String[player.getItemList().size()];
         for (int i = 0; i < player.getItemList().size(); i++) {
             name[i] = player.getItemList().get(i).getName();
         }
-        for (int i = 0; i < player.getItemList().size(); i++) {
-            System.out.println(player.getItemList().get(i).getName());
+
+        if (player.getItemList().size() == 0) {
+            System.out.println("Your inventory is empty, collect items with the inspect room command");
+        } else {
+            System.out.println("[Inventory]");
+            drawMultipleBox(20, amountBoxesInRow, (player.getItemList().size() / amountBoxesInRow + 1),
+                    game, name);
         }
-        drawMultipleBox(20, 3, 4, game, name);
+        System.out.println("\n");
     }
 }
