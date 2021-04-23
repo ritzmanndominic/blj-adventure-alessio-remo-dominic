@@ -1,13 +1,11 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Room {
     private String name;
     private ArrayList<Items> itemsArrayList = new ArrayList<>();
-
-
+    
     public Room() {
     }
 
