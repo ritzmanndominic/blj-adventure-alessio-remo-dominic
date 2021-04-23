@@ -125,9 +125,9 @@ public class Game {
             } else {
                 io.printHeart(player.getLives(), "normal");
             }
-            //the item will be added to player inventory and removed/overwritten from current room
+            //the item will be added to player inventory and removed from current room
             player.getItemList().add(getRooms().get(getActiveRoom()).getItemsArrayList().get(randomNumber));
-            getRooms().get(getActiveRoom()).getItemsArrayList().get(randomNumber).setName("");
+            getRooms().get(getActiveRoom()).getItemsArrayList().remove(randomNumber);
         } else {
             System.out.println("There seems to be no item in this room");
         }

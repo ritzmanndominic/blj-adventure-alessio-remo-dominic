@@ -7,7 +7,6 @@ public class Player {
     private int lives;
     private int maxLives;
 
-
     public Player() {
     }
 
@@ -23,10 +22,6 @@ public class Player {
 
     public void setLives(int lives) {
         this.lives = lives;
-    }
-
-    public void setItemList(ArrayList<Items> itemList) {
-        this.itemList = itemList;
     }
 
     public ArrayList<Items> getItemList() {

@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class IO {
@@ -24,16 +25,19 @@ public class IO {
                 //check if room has item
                 case 3 -> game.inspectRoom(player);
 
+                //show inventory
+                case 4 -> printInventory(player, game);
+
                 //save Data
-                case 4 -> StoreScore.saveObject("Store_Location-Items", player, game);
+                case 5 -> StoreScore.saveObject("Store_Location-Items", player, game);
 
                 //Load Data
-                case 5 -> StoreScore.loadData("Store_Location-Items", player, game);
+                case 6 -> StoreScore.loadData("Store_Location-Items", player, game);
 
                 //Exit program
-                case 6 -> System.exit(0);
+                case 7 -> System.exit(0);
             }
-        } while (choice != 4);
+        } while (choice != 7);
 
 
     }
@@ -104,9 +108,12 @@ public class IO {
     public void map(Game game) {
         System.out.print("\u001B[0m");
         drawMultipleBox(20, 4, 4, game, "", "Balcony", "Balcony", "Balcony",
-                "Bathroom", "Living room", "Living room", "Gym", "Storeroom", "Bedroom", "Bedroom", "Kitchen", "", "Toilet", "Secret room", "Office");
+                "Bathroom", "Living room", "Living room", "Gym", "Storeroom", "Bedroom", "Bedroom", "Kitchen",
+                "", "Toilet", "Secret room", "Office");
         System.out.println("\u001B[36m");
-        drawMultipleBox(24, 3, 2, game, " 1: Print out the possible rooms ",  " 2: Move between rooms", "3: to inspect the room", "4: Save data", "5: Load old data", "6: exit game");
+        drawMultipleBox(24, 3, 3, game, " 1: Print out the possible rooms ",
+                " 2: Move between rooms", "3: to inspect the room", "4: show inventory",
+                "5: Save data", "6: Load old data", "7: exit game");
         System.out.print("\u001B[0m");
     }
 
@@ -135,8 +142,7 @@ public class IO {
     public void printHeart(int amount, String color) {
         if (color.equals("red")) {
             System.out.println("\u001B[31m");
-        }
-        else if (color.equals("green")){
+        } else if (color.equals("green")) {
             System.out.println("\u001B[32m");
         }
         for (int i = 0; i < amount; i++) {
@@ -159,5 +165,16 @@ public class IO {
             System.out.print("      ░░░      ");
         }
         System.out.println("\n\u001B[0m");
+    }
+
+    public void printInventory(Player player, Game game) {
+        String[] name = new String[player.getItemList().size()];
+        for (int i = 0; i < player.getItemList().size(); i++) {
+            name[i] = player.getItemList().get(i).getName();
+        }
+        for (int i = 0; i < player.getItemList().size(); i++) {
+            System.out.println(player.getItemList().get(i).getName());
+        }
+        drawMultipleBox(20, 3, 4, game, name);
     }
 }
