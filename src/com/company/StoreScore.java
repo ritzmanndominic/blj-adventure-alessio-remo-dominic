@@ -62,7 +62,7 @@ public class StoreScore {
         //set empty room
         for (int i = 1; i < 11; i++) {
             if (arrayList.get(i).isEmpty()){
-               //game.getRooms().get(i).setItemsArrayList(null);
+               game.getRooms().get(i).setItemsArrayList(null);
             }
         }
     }

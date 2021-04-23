@@ -25,6 +25,10 @@ public class Player {
         this.lives = lives;
     }
 
+    public void setItemList(ArrayList<Items> itemList) {
+        this.itemList = itemList;
+    }
+
     public ArrayList<Items> getItemList() {
         return itemList;
     }
