@@ -7,7 +7,6 @@ public class Player {
     private int lives;
     private int maxLives;
 
-
     public Player() {
     }
 

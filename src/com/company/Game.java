@@ -139,33 +139,77 @@ public class Game {
         }
     }
 
-    public void fight(String answer, Player player){
-        Scanner scanner = new Scanner(System.in);
-
-        if (answer.equals("Fight")){
-            System.out.println("attack, heal or defend");
-            String choose = scanner.nextLine();
-
-            switch (choose){
-                case "attack":
-                    break;
-
-                case "heal":
-                    if (player.getLives() != 3){
-                    player.setLives(player.getLives() + 1);
-                }else {
-                        System.out.println("Your full");
+    public void fight(String answer, Player player, Game game) {
+        if (answer.equals("Fight")) {
+            Random random = new Random();
+            int enemyMaxLive = 3;
+            int enemyLive = enemyMaxLive;
+            boolean fightEnded = false;
+            do {
+                IO.drawMultipleBox(20, 3, 1, game, "1: attack", "2: defence", "3: heal");
+                int choose = IO.readRangedInt(1, 3);
+                int enemyMove = random.nextInt(2) + 1;
+                switch (choose) {
+                    case 1 -> {
+                        if (enemyMove == 1) {
+                            System.out.println("The enemy too attacked, you and the enemy lose 1 live");
+                            player.setLives(player.getLives() - 1);
+                            enemyLive -= 1;
+                        } else if (enemyMove == 2) {
+                            System.out.println("Your enemy blocked your attack, you lost 1 live");
+                            player.setLives(player.getLives() - 1);
+                        } else {
+                            System.out.println("Your enemy tried to heal, he lost 2 lives");
+                            enemyLive -= 2;
+                        }
                     }
-                    break;
+                    case 2 -> {
+                        if (enemyMove == 1) {
+                            System.out.println("Your enemy tried to attack you, he lost 1 live");
+                            enemyLive--;
+                        } else if (enemyMove == 2) {
+                            System.out.println("Your enemy too tried to block, no changes in health");
+                        } else {
+                            System.out.println("Your enemy healed himself, he gained 1 live");
+                            if (enemyLive < enemyMaxLive) {
+                                enemyLive++;
+                            }
+                        }
+                    }
+                    case 3 -> {
+                        if (enemyMove == 1) {
+                            System.out.println("Your enemy attacked you while healing, you lost 2 lives");
+                            player.setLives(player.getLives() - 2);
+                        } else if (enemyMove == 2) {
+                            System.out.println("Your enemy tried to block, you gained 1 live");
+                            heal(player);
+                        } else {
+                            System.out.println("Your enemy too healed himself, you and the enemy gained 1 live");
+                            heal(player);
+                        }
+                    }
+                    default -> System.out.println("error");
+                }
+                if (player.getLives() <= 0) {
+                    System.out.println("you died");
+                    System.exit(0);
+                } else if (enemyLive <= 0) {
+                    System.out.println("You defeated your enemy");
+                    fightEnded = true;
+                }
 
-                case "defend":
-                    break;
+            } while (!fightEnded);
 
-                default:
-                    System.out.println("error");
-            }
-        }else if (answer.equals("Run")){
+        } else if (answer.equals("Run")) {
             move();
+        }
+    }
+
+    public void heal(Player player) {
+        if (player.getLives() != player.getMaxLives()) {
+            player.setLives(player.getLives() + 1);
+        } else {
+            System.out.println("Your full");
         }
     }
 
