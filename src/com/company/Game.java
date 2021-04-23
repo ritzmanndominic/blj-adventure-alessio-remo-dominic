@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Game {
 
@@ -52,7 +53,9 @@ public class Game {
 
     public void addItems(ArrayList<Room> rooms, ArrayList<Items> items) {
         for (int i = 0; i < rooms.size(); i++) {
-            rooms.get(i).getItemsArrayList().add(items.get(i));
+            Random random = new Random();
+            int randomNumber = random.nextInt(items.size());
+            rooms.get(i).getItemsArrayList().add(items.get(randomNumber));
         }
     }
     
@@ -99,7 +102,7 @@ public class Game {
                 io.printHeart(player.getLives(), "red");
                 player.getItemList().add(getItems().get(getActiveRoom()));
             }
-            else if (player.getLives() < 3) {
+            else if (player.getLives() < player.getMaxLives()) {
                 player.setLives(player.getLives() + 1);
                 System.out.println("\u001B[32mnice! I got an extra life\u001B[0m");
                 io.printHeart(player.getLives(), "green");
