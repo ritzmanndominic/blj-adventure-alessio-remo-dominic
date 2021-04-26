@@ -1,11 +1,12 @@
 package com.company;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Game {
-
     private final ArrayList<Room> rooms = new ArrayList<>();
     private final ArrayList<Items> items = new ArrayList<>();
     private final ArrayList<Door> doors = new ArrayList<>();
@@ -60,7 +61,7 @@ public class Game {
         }
     }
 
-    public void move() {
+    public void move(Game game) {
         boolean validMove = false;
         String newRoom;
         String cancel = "x";
@@ -76,6 +77,7 @@ public class Game {
                         for (int j = 0; j < rooms.size(); j++) {
                             if (newRoom.toLowerCase().equals(rooms.get(j).getName().toLowerCase())) {
                                 activeRoom = j;
+
                             }
                         }
                     }
@@ -139,7 +141,7 @@ public class Game {
         }
     }
 
-    public void fight(String answer, Player player){
+    public void fight(String answer, Player player, Game game){
         Scanner scanner = new Scanner(System.in);
 
         if (answer.equals("Fight")){
@@ -165,7 +167,24 @@ public class Game {
                     System.out.println("error");
             }
         }else if (answer.equals("Run")){
-            move();
+            move(game);
+        }
+    }
+
+    public void gameTime(Game game, Player player, long startTime) throws Exception {
+
+        long gameTime = (System.currentTimeMillis() - startTime) / 60;
+        System.out.println(gameTime + " Min");
+        io.switcher(game, player, startTime);
+    }
+
+    public void safeMove(Game game, Player player, long startTime, int i) throws Exception {
+        Stack<Integer> lastRoom = new Stack<Integer>();
+
+        lastRoom.add(game.activeRoom);
+        if (i > 0) {
+            game.setActiveRoom(lastRoom.pop());
+            io.switcher(game, player, startTime);
         }
     }
 

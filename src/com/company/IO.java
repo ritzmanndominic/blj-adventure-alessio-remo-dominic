@@ -8,19 +8,19 @@ public class IO {
     Scanner scn = new Scanner(System.in);
 
 
-    public void switcher(Game game, Player player) throws Exception {
+    public void switcher(Game game, Player player, long startTime) throws Exception {
 
         int choice;
         do {
             map(game);
             choice = scn.nextInt();
-
+            game.safeMove(game, player, startTime, 0);
             switch (choice) {
                 //print possible rooms
                 case 1 -> possibleRoom(game.getActiveRoom(), game);
 
                 //move between rooms
-                case 2 -> game.move();
+                case 2 -> game.move(game);
 
                 //check if room has item
                 case 3 -> game.inspectRoom(player);
@@ -34,8 +34,14 @@ public class IO {
                 //Load Data
                 case 6 -> StoreScore.loadData("Store_Location-Items", player, game);
 
+                //play time
+                case 7 -> game.gameTime(game, player, startTime);
+
+                //go romm back
+                case 8 -> game.safeMove(game, player, startTime, 1);
+
                 //Exit program
-                case 7 -> System.exit(0);
+                case 9 -> System.exit(0);
             }
         } while (choice != 7);
 
@@ -113,7 +119,7 @@ public class IO {
         System.out.println("\u001B[36m");
         drawMultipleBox(24, 3, 3, game, " 1: Print out the possible rooms ",
                 " 2: Move between rooms", "3: to inspect the room", "4: show inventory",
-                "5: Save data", "6: Load old data", "7: exit game");
+                "5: Save data", "6: Load old data","7: output playtime","8: go one Room back", "9: exit game");
         System.out.print("\u001B[0m");
     }
 
