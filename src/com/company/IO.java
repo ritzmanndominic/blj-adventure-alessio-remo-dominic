@@ -1,26 +1,26 @@
 package com.company;
 
-import java.util.ArrayList;
+import java.sql.Timestamp;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class IO {
 
-    Scanner scn = new Scanner(System.in);
+   public static Scanner scn = new Scanner(System.in);
 
-
-    public void switcher(Game game, Player player, long startTime) throws Exception {
+    public void switcher(Game game, Player player, long startTime, Timestamp startTimestamp) throws Exception {
 
         int choice;
         do {
             map(game);
-            choice = scn.nextInt();
+            choice = readRangedInt(1, 9);
             game.safeMove(game, player, startTime, 0);
             switch (choice) {
                 //print possible rooms
                 case 1 -> possibleRoom(game.getActiveRoom(), game);
 
                 //move between rooms
-                case 2 -> game.move(game);
+                case 2 -> game.move();
 
                 //check if room has item
                 case 3 -> game.inspectRoom(player);
@@ -35,7 +35,7 @@ public class IO {
                 case 6 -> StoreScore.loadData("Store_Location-Items", player, game);
 
                 //play time
-                case 7 -> game.gameTime(game, player, startTime);
+                case 7 -> game.gameTime(startTimestamp, 0);
 
                 //go romm back
                 case 8 -> game.safeMove(game, player, startTime, 1);
@@ -43,7 +43,7 @@ public class IO {
                 //Exit program
                 case 9 -> System.exit(0);
             }
-        } while (choice != 7);
+        } while (choice != 9);
 
 
     }
@@ -119,7 +119,7 @@ public class IO {
         System.out.println("\u001B[36m");
         drawMultipleBox(24, 3, 3, game, " 1: Print out the possible rooms ",
                 " 2: Move between rooms", "3: to inspect the room", "4: show inventory",
-                "5: Save data", "6: Load old data","7: output playtime","8: go one Room back", "9: exit game");
+                "5: Save data", "6: Load old data", "7: output playtime", "8: go one Room back", "9: exit game");
         System.out.print("\u001B[0m");
     }
 
@@ -188,5 +188,25 @@ public class IO {
                     game, name);
         }
         System.out.println("\n");
+    }
+
+    public static int readRangedInt(int min, int max) {
+        Scanner scn = new Scanner(System.in);
+        int input = min - 1;
+        try {
+            input = scn.nextInt();
+        } catch (InputMismatchException var6) {
+            scn.nextLine();
+        }
+
+        while (input < min || input > max) {
+            System.out.println("There was an Error, please repeat your input");
+            try {
+                input = scn.nextInt();
+            } catch (InputMismatchException var5) {
+                scn.nextLine();
+            }
+        }
+        return input;
     }
 }
