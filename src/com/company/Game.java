@@ -8,6 +8,7 @@ public class Game {
     private final ArrayList<Items> items = new ArrayList<>();
     private final ArrayList<Door> doors = new ArrayList<>();
     private int activeRoom = 5;
+    private Stack<Integer> lastRoom = new Stack<>();
 
     IO io = new IO();
 
@@ -74,7 +75,7 @@ public class Game {
                         for (int j = 0; j < rooms.size(); j++) {
                             if (newRoom.toLowerCase().equals(rooms.get(j).getName().toLowerCase())) {
                                 activeRoom = j;
-
+                                getLastRoom().push(getActiveRoom());
                             }
                         }
                     }
@@ -222,17 +223,15 @@ public class Game {
 
         milliseconds = milliseconds % 1000;
         seconds = (seconds % 86400) % 3600 % 60;
-        System.out.println(day + "d " + hour + "h " + minutes + "min " + seconds + "s " + milliseconds + "ms");
+        System.out.println("Playtime: " + day + "d: " + hour + "h: " + minutes + "min: " + seconds + "s: " + milliseconds + "ms");
     }
 
-
-    public void safeMove(Game game, Player player, long startTime, int i) throws Exception {
-        Stack<Integer> lastRoom = new Stack<>();
-
-        lastRoom.add(game.activeRoom);
-        if (i > 0) {
-            game.setActiveRoom(lastRoom.pop());
-
+    public void safeMove(Game game) {
+        if (getLastRoom().size() > 1) {
+            getLastRoom().pop();
+            game.setActiveRoom(getLastRoom().peek());
+        } else {
+            System.out.println("You are at the start");
         }
     }
 
@@ -256,4 +255,11 @@ public class Game {
         return doors;
     }
 
+    public Stack<Integer> getLastRoom() {
+        return lastRoom;
+    }
+
+    public void setLastRoom(Stack<Integer> lastRoom) {
+        this.lastRoom = lastRoom;
+    }
 }

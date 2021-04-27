@@ -6,15 +6,15 @@ import java.util.Scanner;
 
 public class IO {
 
-   public static Scanner scn = new Scanner(System.in);
+    public static Scanner scn = new Scanner(System.in);
 
     public void switcher(Game game, Player player, long startTime, Timestamp startTimestamp) throws Exception {
-
+        game.getLastRoom().push(game.getActiveRoom());
         int choice;
         do {
             map(game);
             choice = readRangedInt(1, 9);
-            game.safeMove(game, player, startTime, 0);
+            //  game.safeMove(game, player, startTime, 0);
             switch (choice) {
                 //print possible rooms
                 case 1 -> possibleRoom(game.getActiveRoom(), game);
@@ -37,8 +37,8 @@ public class IO {
                 //play time
                 case 7 -> game.gameTime(startTimestamp, 0);
 
-                //go romm back
-                case 8 -> game.safeMove(game, player, startTime, 1);
+                //go room back
+                case 8 -> game.safeMove(game);
 
                 //Exit program
                 case 9 -> System.exit(0);
