@@ -8,7 +8,7 @@ public class IO {
 
     public static Scanner scn = new Scanner(System.in);
 
-    public void switcher(Game game, Player player, long startTime, Timestamp startTimestamp) throws Exception {
+    public void switcher(Game game, Player player, Timestamp startTimestamp) throws Exception {
         game.getLastRoom().push(game.getActiveRoom());
         int choice;
         do {
@@ -29,7 +29,7 @@ public class IO {
                 case 4 -> printInventory(player, game);
 
                 //save Data
-                case 5 -> StoreScore.saveObject("Store_Location-Items", player, game);
+                case 5 -> StoreScore.saveData("Store_Location-Items", player, game);
 
                 //Load Data
                 case 6 -> StoreScore.loadData("Store_Location-Items", player, game);
@@ -43,9 +43,7 @@ public class IO {
                 //Exit program
                 case 9 -> System.exit(0);
             }
-        } while (choice != 9);
-
-
+        } while (choice != 10);
     }
 
 

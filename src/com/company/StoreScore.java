@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class StoreScore {
 
-    public static void saveObject(String fileWriteTo, Player player1, Game game) throws Exception{
+    public static void saveData(String fileWriteTo, Player player1, Game game) throws Exception{
         ArrayList<String> arrayList = new ArrayList<>();
         String lives = String.valueOf(player1.getLives());
 
