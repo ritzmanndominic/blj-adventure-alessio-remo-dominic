@@ -8,7 +8,7 @@ public class IO {
 
     public static Scanner scn = new Scanner(System.in);
 
-    public void switcher(Game game, Player player, Timestamp startTimestamp) throws Exception {
+    public void switcher(Game game, Player player) {
         game.getLastRoom().push(game.getActiveRoom());
         int choice;
         do {
@@ -208,7 +208,7 @@ public class IO {
         return input;
     }
 
-    public static void printEnemy(){
+    public static void printEnemy() {
         System.out.println(" ``  `` `` ``  `` `` ``  `` `` ``  `` `:++/:..` `` ``  `` `` ``  `` `` ``  `` `` ``  `` `` ``  `` ``\n" +
                 "`` `` ``` `` `` ``` `` `` ``` `` `.:ohmNNmmNNmmmhyyo+/:.``` `` `` ``` `` `` ``` `` `` ``` `` `` ``` \n" +
                 "`````````````````````````````````yNNNNNNNmmmmmmmmmmmmNNNs```````````````````````````````````````````\n" +
