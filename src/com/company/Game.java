@@ -10,8 +10,6 @@ public class Game {
     private int activeRoom = 5;
     private Stack<Integer> lastRoom = new Stack<>();
 
-    IO io = new IO();
-
     public void manage(ArrayList<Items> items, ArrayList<Door> doors, ArrayList<Room> rooms) {
         createRooms(rooms);
         createDoors(rooms, doors);
@@ -35,14 +33,14 @@ public class Game {
     }
 
     public void createRooms(ArrayList<Room> rooms) {
-        Random randomNumber = new Random(2);
+        Random randomNumber = new Random();
         String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "Livingroom", "Secretroom"};
         for (String roomName : RoomNames) {
             Room room = new Room(roomName, false);
-            if (randomNumber.nextInt() == 1){
+            if (randomNumber.nextInt(2) == 1) {
                 room.setEnemy(true);
             }
-                rooms.add(room);
+            rooms.add(room);
         }
     }
 
@@ -63,22 +61,22 @@ public class Game {
         }
     }
 
-    public void move() {
+    public void move(Player player, Game game) {
         boolean validMove = false;
         String newRoom;
         String cancel = "x";
         do {
             System.out.print("\nType in the room you want to go in: ");
-            newRoom = io.scn.nextLine();
-            for (Door door : doors) {
+            newRoom = IO.scn.nextLine();
+            for (Door door : getDoors()) {
                 if (door.getConnector()[0].getName().toLowerCase().equals(newRoom.toLowerCase()) ||
                         door.getConnector()[1].getName().toLowerCase().equals(newRoom.toLowerCase())) {
-                    if (door.getConnector()[0].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase()) ||
-                            door.getConnector()[1].getName().toLowerCase().equals(rooms.get(activeRoom).getName().toLowerCase())) {
+                    if (door.getConnector()[0].getName().toLowerCase().equals(getRooms().get(getActiveRoom()).getName().toLowerCase()) ||
+                            door.getConnector()[1].getName().toLowerCase().equals(getRooms().get(getActiveRoom()).getName().toLowerCase())) {
                         validMove = true;
-                        for (int j = 0; j < rooms.size(); j++) {
-                            if (newRoom.toLowerCase().equals(rooms.get(j).getName().toLowerCase())) {
-                                activeRoom = j;
+                        for (int j = 0; j < getRooms().size(); j++) {
+                            if (newRoom.toLowerCase().equals(getRooms().get(j).getName().toLowerCase())) {
+                                setActiveRoom(j);
                                 getLastRoom().push(getActiveRoom());
                             }
                         }
@@ -90,11 +88,20 @@ public class Game {
             } else {
                 if (validMove) {
                     System.out.println("You entered the " + newRoom);
+                    enemyManager(player, game);
                 } else {
                     System.out.print("The room could not be found, try again or press \"x\" to cancel");
                 }
             }
         } while (!validMove);
+    }
+
+    public void enemyManager(Player player, Game game) {
+        if (getRooms().get(getActiveRoom()).isEnemy()) {
+            IO io = new IO();
+            io.printEnemy();
+            fight("Fight", player, game);
+        }
     }
 
     public void inspectRoom(Player player) {
@@ -105,6 +112,7 @@ public class Game {
                 amountItems++;
             }
         }
+        IO io = new IO();
         //checks if room has items
         if (amountItems > 0) {
             //a random number will be generated, until a valid item could be found
@@ -203,7 +211,7 @@ public class Game {
                 }
             } while (!fightEnded);
         } else if (answer.equals("Run")) {
-            move();
+            move(player, game);
         }
     }
 

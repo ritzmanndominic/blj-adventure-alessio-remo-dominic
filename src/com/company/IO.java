@@ -1,6 +1,6 @@
 package com.company;
 
-import java.sql.Timestamp;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -20,7 +20,7 @@ public class IO {
                 case 1 -> possibleRoom(game.getActiveRoom(), game);
 
                 //move between rooms
-                case 2 -> game.move();
+                case 2 -> game.move(player, game);
 
                 //check if room has item
                 case 3 -> game.inspectRoom(player);
@@ -142,7 +142,6 @@ public class IO {
         System.out.println("\n");
     }
 
-
     public void printHeart(int amount, String color) {
         if (color.equals("red")) {
             System.out.println("\u001B[31m");
@@ -208,7 +207,8 @@ public class IO {
         return input;
     }
 
-    public static void printEnemy() {
+    public void printEnemy() {
+        System.out.println("An enemy appeared");
         System.out.println(" ``  `` `` ``  `` `` ``  `` `` ``  `` `:++/:..` `` ``  `` `` ``  `` `` ``  `` `` ``  `` `` ``  `` ``\n" +
                 "`` `` ``` `` `` ``` `` `` ``` `` `.:ohmNNmmNNmmmhyyo+/:.``` `` `` ``` `` `` ``` `` `` ``` `` `` ``` \n" +
                 "`````````````````````````````````yNNNNNNNmmmmmmmmmmmmNNNs```````````````````````````````````````````\n" +
