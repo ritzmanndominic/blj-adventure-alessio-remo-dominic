@@ -9,6 +9,7 @@ public class Game {
     private final ArrayList<Door> doors = new ArrayList<>();
     private int activeRoom = 5;
     private Stack<Integer> lastRoom = new Stack<>();
+    IO io = new IO();
 
     public void manage(ArrayList<Items> items, ArrayList<Door> doors, ArrayList<Room> rooms) {
         createRooms(rooms);
@@ -209,6 +210,7 @@ public class Game {
                     System.out.println("You defeated your enemy");
                     fightEnded = true;
                 }
+                io.printHeart(player.getLives(), "red");
             } while (!fightEnded);
         } else if (answer.equals("Run")) {
             move(player, game);
