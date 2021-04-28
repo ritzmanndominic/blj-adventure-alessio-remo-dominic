@@ -1,11 +1,15 @@
 package com.company;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Player {
     private ArrayList<Items> itemList = new ArrayList<>();
     private int lives;
     private int maxLives;
+    private long gameTime;
+    private Timestamp startTime;
 
     public Player() {
     }
@@ -14,6 +18,26 @@ public class Player {
         this.itemList = itemList;
         this.lives = lives;
         this.maxLives = lives;
+
+        gameTime = 0;
+        Date date = new Date();
+        startTime = new Timestamp(date.getTime());
+    }
+
+    public Timestamp getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
+    }
+
+    public long getGameTime() {
+        return gameTime;
+    }
+
+    public void setGameTime(long gameTime) {
+        this.gameTime = gameTime;
     }
 
     public int getLives() {

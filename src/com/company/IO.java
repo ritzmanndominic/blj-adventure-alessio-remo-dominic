@@ -35,7 +35,7 @@ public class IO {
                 case 6 -> StoreScore.loadData("Store_Location-Items", player, game);
 
                 //play time
-                case 7 -> game.gameTime(startTimestamp, 0);
+                case 7 -> game.gameTime(player);
 
                 //go room back
                 case 8 -> game.safeMove(game);

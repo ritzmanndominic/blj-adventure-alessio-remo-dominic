@@ -211,19 +211,22 @@ public class Game {
         }
     }
 
-    public void gameTime(Timestamp startTimestamp, long savedTime) {
+    public void gameTime(Player player) {
         Date date = new Date();
         Timestamp currentTime = new Timestamp(date.getTime());
 
-        long milliseconds = currentTime.getTime() - startTimestamp.getTime() + savedTime;
-        long seconds = milliseconds / 1000;
-        long day = seconds / 86400;
-        long hour = (seconds % 86400) / 3600;
-        long minutes = (seconds % 86400) % 3600 / 60;
-
+        long milliseconds = currentTime.getTime() - player.getStartTime().getTime() + player.getGameTime();
+        player.setGameTime(milliseconds);
+        player.setStartTime(currentTime);
+        long seconds = milliseconds / 1000;           //second to millisecond -> 1000
+        long day = seconds / 86400;                   //second to day -> 24*60*60 -> 86400
+        long hour = (seconds % 86400) / 3600;         //second to hour -> 60*60 -> 3600
+        long minute = (seconds % 86400) % 3600 / 60;  //second to minute -> 60
         milliseconds = milliseconds % 1000;
         seconds = (seconds % 86400) % 3600 % 60;
-        System.out.println("Playtime: " + day + "d: " + hour + "h: " + minutes + "min: " + seconds + "s: " + milliseconds + "ms");
+
+        System.out.println("Playtime: " + day + "d: " + hour + "h: " + minute + "min: " + seconds + "s: "
+                + milliseconds + "ms");
     }
 
     public void safeMove(Game game) {
