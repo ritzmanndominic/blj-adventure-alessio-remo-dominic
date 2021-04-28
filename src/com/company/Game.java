@@ -35,10 +35,14 @@ public class Game {
     }
 
     public void createRooms(ArrayList<Room> rooms) {
+        Random randomNumber = new Random(2);
         String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "Livingroom", "Secretroom"};
         for (String roomName : RoomNames) {
-            Room room = new Room(roomName);
-            rooms.add(room);
+            Room room = new Room(roomName, false);
+            if (randomNumber.nextInt() == 1){
+                room.setEnemy(true);
+            }
+                rooms.add(room);
         }
     }
 
@@ -265,4 +269,51 @@ public class Game {
     public void setLastRoom(Stack<Integer> lastRoom) {
         this.lastRoom = lastRoom;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 }

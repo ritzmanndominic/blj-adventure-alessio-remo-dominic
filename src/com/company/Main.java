@@ -16,5 +16,6 @@ public class Main {
         game.manage(game.getItems(), game.getDoors(), game.getRooms());
         io.switcher(game, player1, ts);
       //  game.fight("Fight", player1, game);
+
     }
 }
