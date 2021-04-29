@@ -4,20 +4,30 @@ import java.sql.Timestamp;
 import java.util.*;
 
 public class Game {
-    private final ArrayList<Room> rooms = new ArrayList<>();
-    private final ArrayList<Items> items = new ArrayList<>();
-    private final ArrayList<Door> doors = new ArrayList<>();
+    private final ArrayList<Room> rooms;
+    private final ArrayList<Items> items;
+    private final ArrayList<Door> doors;
     private int activeRoom = 5;
     private Stack<Integer> lastRoom = new Stack<>();
     IO io = new IO();
 
-    public void manage(ArrayList<Items> items, ArrayList<Door> doors, ArrayList<Room> rooms) {
+    public Game() {
+        rooms = new ArrayList<>();
+        items = new ArrayList<>();
+        doors = new ArrayList<>();
+
         createRooms(rooms);
         createDoors(rooms, doors);
         createItems(items);
         addItems(rooms, items);
     }
 
+    /**
+     * This methode creates the doors between the rooms
+     *
+     * @param rooms Arraylist to get the room
+     * @param doors Arraylist where the doors will be added
+     */
     public void createDoors(ArrayList<Room> rooms, ArrayList<Door> doors) {
         doors.add(new Door(new Room[]{rooms.get(0), rooms.get(1)}, false));
         doors.add(new Door(new Room[]{rooms.get(0), rooms.get(9)}, true));
@@ -33,9 +43,15 @@ public class Game {
         doors.add(new Door(new Room[]{rooms.get(6), rooms.get(4)}, false));
     }
 
+    /**
+     * this methode will add all rooms to the arraylist
+     *
+     * @param rooms the arraylist where the rooms will be added to
+     */
     public void createRooms(ArrayList<Room> rooms) {
         Random randomNumber = new Random();
-        String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym", "Livingroom", "Secretroom"};
+        String[] RoomNames = {"Office", "Kitchen", "Bedroom", "Toilet", "Bathroom", "Balcony", "Storeroom", "Gym",
+                "Livingroom", "Secretroom"};
         for (String roomName : RoomNames) {
             Room room = new Room(roomName, false);
             if (randomNumber.nextInt(2) == 1) {
@@ -45,6 +61,11 @@ public class Game {
         }
     }
 
+    /**
+     * this methode adds all items to the arraylist
+     *
+     * @param items Arraylist where the items will be added to
+     */
     public void createItems(ArrayList<Items> items) {
         String[] itemNames = {"diamond", "gold", "coin", "golden skull", "ring", "sword", "bone", "cursed book", "wine", "easter egg"};
         boolean[] alarm = {false, false, false, true, false, true, true, true, false, false};
@@ -54,6 +75,12 @@ public class Game {
         }
     }
 
+    /**
+     * This methode will randomly set the items to the rooms
+     *
+     * @param rooms Arraylist with the rooms where the items will be added to
+     * @param items Arraylist which holds all items
+     */
     public void addItems(ArrayList<Room> rooms, ArrayList<Items> items) {
         for (int i = 0; i < rooms.size(); i++) {
             Random random = new Random();
@@ -62,6 +89,12 @@ public class Game {
         }
     }
 
+    /**
+     * This methode will move the player to an other room
+     *
+     * @param player Player which gets moved
+     * @param game   game is used to draw box
+     */
     public void move(Player player, Game game) {
         boolean validMove = false;
         String newRoom;
@@ -97,6 +130,12 @@ public class Game {
         } while (!validMove);
     }
 
+    /**
+     * Manages the procedure of fight
+     *
+     * @param player player used to check and change lives during the fight
+     * @param game   game is used to draw box
+     */
     public void enemyManager(Player player, Game game) {
         if (getRooms().get(getActiveRoom()).isEnemy()) {
             IO io = new IO();
@@ -105,6 +144,11 @@ public class Game {
         }
     }
 
+    /**
+     * Checks if room has items in it, it only checks for one item per use
+     *
+     * @param player to decrease player lives if item is alarmed
+     */
     public void inspectRoom(Player player) {
         //counts the amount of items in the current room
         int amountItems = 0;
@@ -152,6 +196,13 @@ public class Game {
         }
     }
 
+    /**
+     * This manages the fight, a fight ends if either the player or the enemy dies
+     *
+     * @param answer checks if player wants to fight
+     * @param player player used to decrease and increase
+     * @param game   used to draw box
+     */
     public void fight(String answer, Player player, Game game) {
         if (answer.equals("Fight")) {
             Random random = new Random();
@@ -217,6 +268,11 @@ public class Game {
         }
     }
 
+    /**
+     * This methode increases player health
+     *
+     * @param player player where the health increase
+     */
     public void heal(Player player) {
         if (player.getLives() != player.getMaxLives()) {
             player.setLives(player.getLives() + 1);
@@ -225,6 +281,11 @@ public class Game {
         }
     }
 
+    /**
+     * This methode prints the playtime the player
+     *
+     * @param player used if player has used a save file
+     */
     public void gameTime(Player player) {
         Date date = new Date();
         Timestamp currentTime = new Timestamp(date.getTime());
@@ -243,6 +304,11 @@ public class Game {
                 + milliseconds + "ms");
     }
 
+    /**
+     * This methode will move the player to his last location
+     *
+     * @param game
+     */
     public void safeMove(Game game) {
         if (getLastRoom().size() > 1) {
             getLastRoom().pop();
@@ -251,7 +317,7 @@ public class Game {
             System.out.println("You are at the start");
         }
     }
-
+    
     public int getActiveRoom() {
         return activeRoom;
     }

@@ -4,8 +4,8 @@
     <list default="true" id="e99e4ad6-82aa-4a0b-acc6-e8dc3714fbce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store_Location-Items" beforeDir="false" afterPath="$PROJECT_DIR$/Store_Location-Items" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,15 +72,14 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/Game.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="WindowStateProjectService">
+    <state x="3005" y="-197" key="#com.intellij.ide.util.MemberChooser" timestamp="1619618857901">
+      <screen x="1920" y="-613" width="2560" height="1400" />
+    </state>
+    <state x="3005" y="-197" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.-613.2560.1400@1920.-613.2560.1400" timestamp="1619618857901" />
+    <state x="2582" y="-252" key="new project wizard" timestamp="1619677637640">
+      <screen x="1920" y="-613" width="2560" height="1400" />
+    </state>
+    <state x="2582" y="-252" key="new project wizard/0.0.1536.824/1920.-613.2560.1400@1920.-613.2560.1400" timestamp="1619677637640" />
   </component>
 </project>
