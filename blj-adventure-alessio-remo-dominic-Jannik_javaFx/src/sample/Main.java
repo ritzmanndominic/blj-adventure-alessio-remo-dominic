@@ -1,22 +1,18 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.io.FileInputStream;
 
 
 public class Main extends Application {
@@ -45,26 +41,27 @@ public class Main extends Application {
         Controller.doors(group);
         Controller.roomNames(group);
 
-     //   FileInputStream inputstream = new FileInputStream("C:\\Users\\jan04\\Downloads\\image.jpg");
-//        Image image = new Image(inputstream);
-//        ImageView imageView = new ImageView(image);
-//        imageView.setFitHeight(100.0);
-//        imageView.setFitWidth(100.0);
-//        Group group1 = new Group(imageView);
-        Text text = new Text("test");
-        text.setFont(Font.font("Verdana", 25));
-        hBox.setAlignment(Pos.BASELINE_RIGHT);
-        hBox.setAlignment(Pos.BASELINE_RIGHT);
-
-        hBox.getChildren().addAll(text);
-
-        root.setTop(hBox);
+        root.setRight(hBox);
         root.setBottom(hBox1);
         root.setCenter(group);
         root.setLeft(vBox);
-//        root.setRight(group1);
 
-        Scene scene1 = new Scene(root, 1000, 700, Color.DODGERBLUE);
+        Button button2 = new Button("Start Game");
+        button2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                IO io = new IO();
+                Game game = new Game();
+                Player player = new Player();
+                Player player1 = new Player(player.getItemList(), 3);
+                io.switcher(game, player1);
+            }
+        });
+
+        hBox.getChildren().add(button2);
+        hBox.setMargin(button2, new Insets(16));
+        button2.setFont(Font.font("Verdana", 15));
+
+        Scene scene1 = new Scene(root, 1100, 700, Color.DODGERBLUE);
         primaryStage.setScene(scene1);
         scene1.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
         primaryStage.show();
