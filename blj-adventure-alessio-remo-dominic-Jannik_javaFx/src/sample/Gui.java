@@ -33,7 +33,7 @@ public class Gui extends Application {
         Button bottom1 = createButton("2: ");
         Button bottom2 = createButton("3: ");
 
-        hBox1.getChildren().addAll(bottom,bottom1,bottom2);
+        hBox1.getChildren().addAll(bottom, bottom1, bottom2);
 
         Text log = new Text("Log:");
         HBox.setHgrow(log, Priority.ALWAYS);
@@ -51,7 +51,6 @@ public class Gui extends Application {
         root.setBottom(hBox1);
         root.setCenter(group);
         root.setLeft(vBox);
-
         root.setTop(hBox2);
 
         Text room = new Text("Room: ");
@@ -71,7 +70,8 @@ public class Gui extends Application {
 
         Button button2 = new Button("Start Game");
         button2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 IO io = new IO();
                 Game game = new Game();
                 Player player = new Player();
