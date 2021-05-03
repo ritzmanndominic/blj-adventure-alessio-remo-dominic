@@ -8,7 +8,6 @@ public class Main {
         Player player = new Player();
         Player player1 = new Player(player.getItemList(), 3);
 
-        game.manage(game.getItems(), game.getDoors(), game.getRooms());
         io.switcher(game, player1);
     }
 }
