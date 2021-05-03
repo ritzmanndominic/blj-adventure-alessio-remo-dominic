@@ -4,17 +4,20 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+
+import java.awt.*;
+import java.util.concurrent.Flow;
 
 public class Gui extends Application {
 
@@ -22,13 +25,14 @@ public class Gui extends Application {
     public void start(Stage primaryStage) throws Exception {
         BorderPane root = new BorderPane();
         HBox hBox = new HBox();
+        HBox hBox1 = new HBox();
+        HBox hBox2 = new HBox();
         Group group = new Group();
 
         Button bottom = createButton("1: ");
         Button bottom1 = createButton("2: ");
         Button bottom2 = createButton("3: ");
 
-        HBox hBox1 = new HBox();
         hBox1.getChildren().addAll(bottom,bottom1,bottom2);
 
         Text log = new Text("Log:");
@@ -36,6 +40,7 @@ public class Gui extends Application {
         VBox vBox = new VBox();
         VBox.setMargin(log, new Insets(10));
         log.setFont(Font.font("Verdana", 25));
+        log.setTextAlignment(TextAlignment.CENTER);
 
         vBox.getChildren().add(log);
         Controller.lines(group);
@@ -46,6 +51,23 @@ public class Gui extends Application {
         root.setBottom(hBox1);
         root.setCenter(group);
         root.setLeft(vBox);
+
+        root.setTop(hBox2);
+
+        Text room = new Text("Room: ");
+        HBox.setHgrow(room, Priority.ALWAYS);
+        VBox.setMargin(room, new Insets(10));
+        room.setFont(Font.font("Verdana", 25));
+        vBox.getChildren().add(room);
+
+        Text health = new Text("Health: ");
+        HBox.setHgrow(health, Priority.ALWAYS);
+        VBox.setMargin(health, new Insets(10));
+        health.setFont(Font.font("Verdana", 25));
+        vBox.getChildren().add(health);
+
+        hBox2.getChildren().addAll(room, health);
+        hBox2.setAlignment(Pos.BASELINE_CENTER);
 
         Button button2 = new Button("Start Game");
         button2.setOnAction(new EventHandler<ActionEvent>() {
