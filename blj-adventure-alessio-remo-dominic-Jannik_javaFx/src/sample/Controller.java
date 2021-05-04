@@ -16,6 +16,7 @@ import javafx.scene.control.ListView;
 import java.util.ArrayList;
 
 public class Controller {
+    IO io = new IO();
     private static Color DOOR_COLOR;
     private ObservableList<String> logContent = FXCollections.observableArrayList();
     @FXML
@@ -86,13 +87,14 @@ public class Controller {
 
     @FXML
     void button1Pressed(ActionEvent event) {
-        IO io = new IO();
         getLogContent().add(io.possibleRoom(5, new Game()));
         getLogBook().setItems(getLogContent());
     }
 
     @FXML
     void button2Pressed(ActionEvent event) {
+        
+
         getLogContent().add("text");
         getLogBook().setItems(getLogContent());
     }
