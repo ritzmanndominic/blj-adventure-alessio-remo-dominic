@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 
 public class Controller {
     private static Color DOOR_COLOR;
-    
+    private ObservableList<String> logContent = FXCollections.observableArrayList();
     @FXML
     private Label labelLocation;
 
@@ -50,7 +52,7 @@ public class Controller {
     private Button button9;
 
     @FXML
-    private ListView<?> logText;
+    private ListView<String> logBook;
 
     @FXML
     private Label labelBalcony;
@@ -85,6 +87,8 @@ public class Controller {
     @FXML
     void button1Pressed(ActionEvent event) {
         System.out.println("test");
+        getLogContent().add("text");
+        getLogBook().setItems(getLogContent());
     }
 
     @FXML
@@ -212,5 +216,21 @@ public class Controller {
 
     public static Color getDoorColor() {
         return DOOR_COLOR;
+    }
+
+    public ListView<String> getLogBook() {
+        return logBook;
+    }
+
+    public void setLogBook(ListView<String> logBook) {
+        this.logBook = logBook;
+    }
+
+    public ObservableList<String> getLogContent() {
+        return logContent;
+    }
+
+    public void setLogContent(ObservableList<String> logContent) {
+        this.logContent = logContent;
     }
 }
