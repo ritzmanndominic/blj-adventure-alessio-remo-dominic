@@ -93,8 +93,6 @@ public class Controller {
 
     @FXML
     void button2Pressed(ActionEvent event) {
-        
-
         getLogContent().add("text");
         getLogBook().setItems(getLogContent());
     }
@@ -125,6 +123,7 @@ public class Controller {
 
     @FXML
     void button7Pressed(ActionEvent event) {
+        getButton7().setText("Output Playtime");
         getLogContent().add("text");
         getLogBook().setItems(getLogContent());
     }
@@ -242,5 +241,77 @@ public class Controller {
 
     public void setLogContent(ObservableList<String> logContent) {
         this.logContent = logContent;
+    }
+
+    public Button getButton1() {
+        return button1;
+    }
+
+    public void setButton1(Button button1) {
+        this.button1 = button1;
+    }
+
+    public Button getButton2() {
+        return button2;
+    }
+
+    public void setButton2(Button button2) {
+        this.button2 = button2;
+    }
+
+    public Button getButton3() {
+        return button3;
+    }
+
+    public void setButton3(Button button3) {
+        this.button3 = button3;
+    }
+
+    public Button getButton4() {
+        return button4;
+    }
+
+    public void setButton4(Button button4) {
+        this.button4 = button4;
+    }
+
+    public Button getButton5() {
+        return button5;
+    }
+
+    public void setButton5(Button button5) {
+        this.button5 = button5;
+    }
+
+    public Button getButton6() {
+        return button6;
+    }
+
+    public void setButton6(Button button6) {
+        this.button6 = button6;
+    }
+
+    public Button getButton7() {
+        return button7;
+    }
+
+    public void setButton7(Button button7) {
+        this.button7 = button7;
+    }
+
+    public Button getButton8() {
+        return button8;
+    }
+
+    public void setButton8(Button button8) {
+        this.button8 = button8;
+    }
+
+    public Button getButton9() {
+        return button9;
+    }
+
+    public void setButton9(Button button9) {
+        this.button9 = button9;
     }
 }
