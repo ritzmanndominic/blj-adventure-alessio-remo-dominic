@@ -123,25 +123,32 @@ public class IO {
         System.out.print("\u001B[0m");
     }
 
-    public void possibleRoom(int activeRoom, Game game) {
-        System.out.print("Possible rooms: ");
+    public String possibleRoom(int activeRoom, Game game) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Possible rooms: ");
+       // System.out.print("Possible rooms: ");
         boolean first = false;
         for (int i = 0; i < game.getDoors().size(); i++) {
             if (game.getDoors().get(i).getConnector()[0] == game.getRooms().get(activeRoom)) {
                 if (first) {
-                    System.out.print(", ");
+                    stringBuilder.append(", ");
+                  //  System.out.print(", ");
                 }
-                System.out.print(game.getDoors().get(i).getConnector()[1].getName());
+                stringBuilder.append(game.getDoors().get(i).getConnector()[1].getName());
+               // System.out.print(game.getDoors().get(i).getConnector()[1].getName());
                 first = true;
             } else if (game.getDoors().get(i).getConnector()[1] == game.getRooms().get(activeRoom)) {
                 if (first) {
+                    stringBuilder.append(", ");
                     System.out.print(", ");
                 }
-                System.out.print(game.getDoors().get(i).getConnector()[0].getName());
+                stringBuilder.append(game.getDoors().get(i).getConnector()[0].getName());
+                //System.out.print(game.getDoors().get(i).getConnector()[0].getName());
                 first = true;
             }
         }
-        System.out.println("\n");
+        System.out.println(stringBuilder + "\n");
+        return stringBuilder.toString();
     }
 
     public void printHeart(int amount, String color) {

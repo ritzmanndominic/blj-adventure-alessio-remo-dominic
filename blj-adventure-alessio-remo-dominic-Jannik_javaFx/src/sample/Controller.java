@@ -86,49 +86,57 @@ public class Controller {
 
     @FXML
     void button1Pressed(ActionEvent event) {
-        System.out.println("test");
-        getLogContent().add("text");
+        IO io = new IO();
+        getLogContent().add(io.possibleRoom(5, new Game()));
         getLogBook().setItems(getLogContent());
     }
 
     @FXML
     void button2Pressed(ActionEvent event) {
-        System.out.println("test");
+        getLogContent().add("text");
+        getLogBook().setItems(getLogContent());
     }
 
     @FXML
     void button3Pressed(ActionEvent event) {
-        System.out.println("test");
+        getLogContent().add("text");
+        getLogBook().setItems(getLogContent());
     }
 
     @FXML
     void button4Pressed(ActionEvent event) {
-        System.out.println("test");
+        getLogContent().add("text");
+        getLogBook().setItems(getLogContent());
     }
 
     @FXML
     void button5Pressed(ActionEvent event) {
-        System.out.println("test");
+        getLogContent().add("text");
+        getLogBook().setItems(getLogContent());
     }
 
     @FXML
     void button6Pressed(ActionEvent event) {
-        System.out.println("test");
+        getLogContent().add("text");
+        getLogBook().setItems(getLogContent());
     }
 
     @FXML
     void button7Pressed(ActionEvent event) {
-        System.out.println("test");
+        getLogContent().add("text");
+        getLogBook().setItems(getLogContent());
     }
 
     @FXML
     void button8Pressed(ActionEvent event) {
-        System.out.println("test");
+        getLogContent().add("text");
+        getLogBook().setItems(getLogContent());
     }
 
     @FXML
     void button9Pressed(ActionEvent event) {
-        System.out.println("test");
+        getLogContent().add("text");
+        getLogBook().setItems(getLogContent());
     }
 
     public Controller() {
