@@ -1,15 +1,131 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
 
 public class Controller {
     private static Color DOOR_COLOR;
+    
+    @FXML
+    private Label labelLocation;
+
+    @FXML
+    private Label labelHealth;
+
+    @FXML
+    private Button button1;
+
+    @FXML
+    private Button button7;
+
+    @FXML
+    private Button button6;
+
+    @FXML
+    private Button button3;
+
+    @FXML
+    private Button button5;
+
+    @FXML
+    private Button button4;
+
+    @FXML
+    private Button button2;
+
+    @FXML
+    private Button button8;
+
+    @FXML
+    private Button button9;
+
+    @FXML
+    private ListView<?> logText;
+
+    @FXML
+    private Label labelBalcony;
+
+    @FXML
+    private Label labelLivingroom;
+
+    @FXML
+    private Label labelBathroom;
+
+    @FXML
+    private Label labelGym;
+
+    @FXML
+    private Label labelToilet;
+
+    @FXML
+    private Label labelStoreroom;
+
+    @FXML
+    private Label labelBedroom;
+
+    @FXML
+    private Label labelKitchen;
+
+    @FXML
+    private Label labelSecretroom;
+
+    @FXML
+    private Label labelOffice;
+
+    @FXML
+    void button1Pressed(ActionEvent event) {
+        System.out.println("test");
+    }
+
+    @FXML
+    void button2Pressed(ActionEvent event) {
+        System.out.println("test");
+    }
+
+    @FXML
+    void button3Pressed(ActionEvent event) {
+        System.out.println("test");
+    }
+
+    @FXML
+    void button4Pressed(ActionEvent event) {
+        System.out.println("test");
+    }
+
+    @FXML
+    void button5Pressed(ActionEvent event) {
+        System.out.println("test");
+    }
+
+    @FXML
+    void button6Pressed(ActionEvent event) {
+        System.out.println("test");
+    }
+
+    @FXML
+    void button7Pressed(ActionEvent event) {
+        System.out.println("test");
+    }
+
+    @FXML
+    void button8Pressed(ActionEvent event) {
+        System.out.println("test");
+    }
+
+    @FXML
+    void button9Pressed(ActionEvent event) {
+        System.out.println("test");
+    }
 
     public Controller() {
         this.DOOR_COLOR = Color.RED;
