@@ -11,8 +11,8 @@ public class Main extends Application {
     Gui gui = new Gui();
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root, 760, 680);
         scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 
@@ -21,6 +21,8 @@ public class Main extends Application {
         stage.setMinWidth(760);
         stage.setMinHeight(680);
         stage.setScene(scene);
+        Controller controller = loader.getController();
+        controller.setDefault();
         stage.show();
 //
 //        gui.start(primaryStage);

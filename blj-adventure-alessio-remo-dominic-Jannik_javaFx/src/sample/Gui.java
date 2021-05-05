@@ -3,9 +3,11 @@ package sample;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
@@ -99,6 +101,4 @@ public class Gui extends Application {
         HBox.setHgrow(button, Priority.ALWAYS);
         return button;
     }
-
-
 }

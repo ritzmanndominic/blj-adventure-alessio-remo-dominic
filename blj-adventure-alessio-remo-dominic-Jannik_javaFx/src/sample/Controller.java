@@ -3,7 +3,10 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
@@ -12,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -85,9 +89,14 @@ public class Controller {
     @FXML
     private Label labelOffice;
 
+    private Label[] roomNames = {labelOffice, labelKitchen, labelBedroom, labelToilet, labelBalcony, labelStoreroom,
+            labelGym, labelLivingroom, labelBathroom, labelSecretroom};
+
+    private Button[] buttons = {getButton1(), button2, button3, button4, button5, button6, button7, button8, button9};
+
     @FXML
     void button1Pressed(ActionEvent event) {
-        getLogContent().add(io.possibleRoom(5, new Game()));
+        getLogContent().add(io.rooms(5, new Game()));
         getLogBook().setItems(getLogContent());
     }
 
@@ -140,8 +149,17 @@ public class Controller {
         getLogBook().setItems(getLogContent());
     }
 
-    public Controller() {
-        this.DOOR_COLOR = Color.RED;
+    public void setDefault() {
+        getButton1().setText("possible rooms");
+        getButton2().setText("move to room");
+        getButton3().setText("inspect room");
+        getButton4().setText("show inventory");
+        getButton5().setText("save data");
+        getButton6().setText("load saved data");
+        getButton7().setText("show playtime");
+        getButton8().setText("go to previous room");
+        getButton9().setText("exit game");
+        
     }
 
     public static Group doors(Group root) {
@@ -313,5 +331,21 @@ public class Controller {
 
     public void setButton9(Button button9) {
         this.button9 = button9;
+    }
+
+    public Button[] getButtons() {
+        return buttons;
+    }
+
+    public void setButtons(Button[] buttons) {
+        this.buttons = buttons;
+    }
+
+    public Label[] getRoomNames() {
+        return roomNames;
+    }
+
+    public void setRoomNames(Label[] roomNames) {
+        this.roomNames = roomNames;
     }
 }

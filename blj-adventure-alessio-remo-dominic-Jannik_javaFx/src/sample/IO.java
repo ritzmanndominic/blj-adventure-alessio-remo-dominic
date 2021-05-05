@@ -1,6 +1,7 @@
 package sample;
 
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -123,31 +124,29 @@ public class IO {
         System.out.print("\u001B[0m");
     }
 
-    public String possibleRoom(int activeRoom, Game game) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Possible rooms: ");
-       // System.out.print("Possible rooms: ");
-        boolean first = false;
+    public ArrayList<String> possibleRoom(int activeRoom, Game game) {
+        ArrayList<String> rooms = new ArrayList<>();
         for (int i = 0; i < game.getDoors().size(); i++) {
             if (game.getDoors().get(i).getConnector()[0] == game.getRooms().get(activeRoom)) {
-                if (first) {
-                    stringBuilder.append(", ");
-                  //  System.out.print(", ");
-                }
-                stringBuilder.append(game.getDoors().get(i).getConnector()[1].getName());
-               // System.out.print(game.getDoors().get(i).getConnector()[1].getName());
-                first = true;
+                rooms.add(game.getDoors().get(i).getConnector()[1].getName());
             } else if (game.getDoors().get(i).getConnector()[1] == game.getRooms().get(activeRoom)) {
-                if (first) {
-                    stringBuilder.append(", ");
-                    System.out.print(", ");
-                }
-                stringBuilder.append(game.getDoors().get(i).getConnector()[0].getName());
-                //System.out.print(game.getDoors().get(i).getConnector()[0].getName());
-                first = true;
+                rooms.add(game.getDoors().get(i).getConnector()[0].getName());
             }
         }
-        System.out.println(stringBuilder + "\n");
+        return rooms;
+    }
+
+    public String rooms(int activeRoom, Game game) {
+        StringBuilder stringBuilder = new StringBuilder();
+        ArrayList<String> rooms = possibleRoom(activeRoom, game);
+        stringBuilder.append("Possible rooms: ");
+
+        for (int i = 0; i < rooms.size(); i++) {
+            stringBuilder.append(rooms.get(i));
+            if (i < rooms.size() - 1) {
+                stringBuilder.append(", ");
+            }
+        }
         return stringBuilder.toString();
     }
 
