@@ -5,17 +5,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Player {
-    private ArrayList<Items> itemList = new ArrayList<>();
+    private ArrayList<Items> itemList;
     private int lives;
     private int maxLives;
     private long gameTime;
     private Timestamp startTime;
 
-    public Player() {
-    }
-
-    public Player(ArrayList<Items> itemList, int lives) {
-        this.itemList = itemList;
+    public Player(int lives) {
+        this.itemList = new ArrayList<>();
         this.lives = lives;
         this.maxLives = lives;
 
