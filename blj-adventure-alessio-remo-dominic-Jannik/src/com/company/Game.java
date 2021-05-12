@@ -216,7 +216,7 @@ public class Game {
                 switch (choose) {
                     case 1 -> {
                         if (enemyMove == 1) {
-                            System.out.println("The enemy too attacked, you and the enemy lose 1 live");
+                            System.out.println("The enemy attacked you. You and the enemy lost 1 live");
                             player.setLives(player.getLives() - 1);
                             enemyLive -= 1;
                         } else if (enemyMove == 2) {
@@ -317,7 +317,7 @@ public class Game {
             System.out.println("You are at the start");
         }
     }
-    
+
     public int getActiveRoom() {
         return activeRoom;
     }

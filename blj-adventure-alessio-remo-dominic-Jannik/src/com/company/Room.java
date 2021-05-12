@@ -6,7 +6,7 @@ public class Room {
     private String name;
     private ArrayList<Items> itemsArrayList = new ArrayList<>();
     private boolean enemy;
-    
+
     public Room() {
     }
 
@@ -27,9 +27,15 @@ public class Room {
         return itemsArrayList;
     }
 
-    public void setItemsArrayList(ArrayList<Items> itemsArrayList) { this.itemsArrayList = itemsArrayList; }
+    public void setItemsArrayList(ArrayList<Items> itemsArrayList) {
+        this.itemsArrayList = itemsArrayList;
+    }
 
-    public boolean isEnemy() { return enemy; }
+    public boolean isEnemy() {
+        return enemy;
+    }
 
-    public void setEnemy(boolean enemy) { this.enemy = enemy; }
+    public void setEnemy(boolean enemy) {
+        this.enemy = enemy;
+    }
 }
