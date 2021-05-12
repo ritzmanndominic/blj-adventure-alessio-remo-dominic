@@ -114,7 +114,8 @@ public class Controller {
 
     @FXML
     void button4Pressed(ActionEvent event) {
-        getLogContent().add("text");
+        IO io = new IO();
+        getLogContent().add(io.printInventory(new Player(), new Game()));
         getLogBook().setItems(getLogContent());
     }
 
@@ -132,7 +133,6 @@ public class Controller {
 
     @FXML
     void button7Pressed(ActionEvent event) {
-        getButton7().setText("Output Playtime");
         getLogContent().add("text");
         getLogBook().setItems(getLogContent());
     }

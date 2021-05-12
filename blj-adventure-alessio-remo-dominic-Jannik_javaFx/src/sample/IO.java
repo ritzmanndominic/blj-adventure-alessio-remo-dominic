@@ -178,7 +178,7 @@ public class IO {
         System.out.println("\n\u001B[0m");
     }
 
-    public void printInventory(Player player, Game game) {
+    public String printInventory(Player player, Game game) {
         int amountBoxesInRow = 3;
         String[] name = new String[player.getItemList().size()];
         for (int i = 0; i < player.getItemList().size(); i++) {
@@ -193,6 +193,7 @@ public class IO {
                     game, name);
         }
         System.out.println("\n");
+        return player.getItemList().toString();
     }
 
     public static int readRangedInt(int min, int max) {
